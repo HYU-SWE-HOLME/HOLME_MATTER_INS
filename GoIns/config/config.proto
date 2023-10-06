@@ -1,0 +1,16 @@
+syntax="proto3";
+
+package config;
+option go_package = "GoIns/config/";
+
+message ConfigRequest {
+  string payload = 1;
+}
+
+message ConfigResponse {
+  string payload = 1;
+}
+
+service ConfigReqResp {
+  rpc TestResponse (ConfigRequest) returns (ConfigResponse);
+}
