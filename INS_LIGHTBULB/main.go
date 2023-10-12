@@ -9,6 +9,8 @@ import (
 	"log"
 	"net"
 
+	lightBulb "INS_LIGHTBULB/src/core"
+	frameHandler "INS_LIGHTBULB/src/core/handler"
 	"INS_LIGHTBULB/src/features"
 	"INS_LIGHTBULB/src/terminal"
 )
@@ -23,6 +25,7 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
+	lightBulb.RegisterLightBulbServer(grpcServer, &frameHandler.InstanceHandler{})
 	log.Printf("Starting Instance...")
 	log.Printf("💡💡INSTANCE LIGHTBULB IN RUNNING...💡💡")
 

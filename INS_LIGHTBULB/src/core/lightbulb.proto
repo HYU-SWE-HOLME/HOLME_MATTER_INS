@@ -12,5 +12,5 @@ message lightBulbFrame {
 message lightBulbRes{}
 
 service LightBulb {
-  rpc handleFrame(lightBulbFrame) returns(lightBulbRes);
+  rpc HandleFrame(lightBulbFrame) returns(lightBulbRes);
 }

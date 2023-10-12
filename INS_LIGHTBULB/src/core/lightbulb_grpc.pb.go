@@ -35,7 +35,7 @@ func NewLightBulbClient(cc grpc.ClientConnInterface) LightBulbClient {
 
 func (c *lightBulbClient) HandleFrame(ctx context.Context, in *LightBulbFrame, opts ...grpc.CallOption) (*LightBulbRes, error) {
 	out := new(LightBulbRes)
-	err := c.cc.Invoke(ctx, "/lightblub.LightBulb/handleFrame", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/lightblub.LightBulb/HandleFrame", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _LightBulb_HandleFrame_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/lightblub.LightBulb/handleFrame",
+		FullMethod: "/lightblub.LightBulb/HandleFrame",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LightBulbServer).HandleFrame(ctx, req.(*LightBulbFrame))
@@ -96,7 +96,7 @@ var LightBulb_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*LightBulbServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "handleFrame",
+			MethodName: "HandleFrame",
 			Handler:    _LightBulb_HandleFrame_Handler,
 		},
 	},
