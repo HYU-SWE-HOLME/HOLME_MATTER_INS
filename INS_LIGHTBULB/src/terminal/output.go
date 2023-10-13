@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+//execTerminal
 /*
 execTerminal(): Core Terminal Function - execute terminal functions while features running.
 - Parameter:
@@ -40,6 +41,15 @@ func execTerminal(name string, args []string) bool {
 	return true
 }
 
+// ClearTerminal
+/*
+- It clears terminal, showing new visualization.
+- Parameter:
+  - none
+
+- Return Value: void
+	- It will clear the terminal and exit the function.
+*/
 func ClearTerminal() {
 	if ret := execTerminal("clear", nil); !ret {
 		log.Fatalf("Error on ClearTerminal()")

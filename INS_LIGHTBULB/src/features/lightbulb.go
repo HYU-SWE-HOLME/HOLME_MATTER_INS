@@ -1,12 +1,25 @@
 package features
 
 import (
+	"INS_LIGHTBULB/src/terminal"
 	"github.com/fatih/color"
 	"os"
 	"strconv"
 )
 
-func returnPrintingMsg(state bool, degree int, color string) string {
+//returnFormattedMsg
+/*
+  - It formats the message and returns the proper message.
+- Parameter:
+  - state: bool -> shows whether the light bulb is on or off
+  - degree: int -> shows the degree (percentage) of light power.
+  - color: string -> shows the color of the light
+
+- Return Value: string
+	- It will return a completely formatted message.
+*/
+
+func returnFormattedMsg(state bool, degree int, color string) string {
 	if !state {
 		return "Light state: OFF"
 	} else {
@@ -14,11 +27,58 @@ func returnPrintingMsg(state bool, degree int, color string) string {
 	}
 }
 
-func PrintDefaultLight() {
+// readImageFile
+/*
+- It reads the image file, return the byte array available to print.
+- Parameter:
+  - none
+
+- Return Value: []byte
+	- It returns byte array which is printable.
+*/
+func readImageFile() []byte {
 	buf, err := os.ReadFile("src/raw/default.txt")
 	if err != nil {
 		panic(err)
 	}
+
+	return buf
+}
+
+// PrintLightDisabled
+/*
+- It prints default light.
+- It will read a image of light bulb, and print in default state.
+- Parameter:
+  - none
+
+- Return Value: void
+	- It will do its task and exit the function.
+*/
+func PrintLightDisabled() {
+	buf := readImageFile()
+	terminal.ClearTerminal() //* Clear the terminal first.
 	color.HiBlack(string(buf))
-	color.HiBlack(returnPrintingMsg(false, 0, ""))
+	color.HiBlack(returnFormattedMsg(false, 0, ""))
+}
+
+func PrintLightEnabled(degree int, flag uint8) {
+	buf := readImageFile()
+	terminal.ClearTerminal() //* Clear the terminal first.
+
+	//* Print will be differed by the flag.
+	//* Flag will be 8bit unsigned integer.
+	switch flag {
+	case 0:
+		{ //* Default Light
+			color.White(string(buf))
+			color.White(returnFormattedMsg(true, degree, "WHITE"))
+		}
+	case 1:
+		{ //* Yellow Light
+			color.Yellow(string(buf))
+			color.Yellow(returnFormattedMsg(true, degree, "YELLOW"))
+		}
+
+	}
 }

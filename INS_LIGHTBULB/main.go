@@ -15,7 +15,7 @@ import (
 	"INS_LIGHTBULB/src/terminal"
 )
 
-const LbPort string = "10001"
+const LbPort string = "10001" //* Instance Light Bulb will use port 10001
 
 func main() {
 	lis, err := net.Listen("tcp", ":"+LbPort)
@@ -26,11 +26,12 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 	lightBulb.RegisterLightBulbServer(grpcServer, &frameHandler.InstanceHandler{})
+	//* Light bulb will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
 	log.Printf("💡💡INSTANCE LIGHTBULB IN RUNNING...💡💡")
 
-	terminal.ClearTerminal() //* Clears Terminal.
-	features.PrintDefaultLight()
+	terminal.ClearTerminal()      //* Clears Terminal, starts initialization.
+	features.PrintLightDisabled() //* Prints the default images as a initial state.
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to initate features: %v", err)
 	}
