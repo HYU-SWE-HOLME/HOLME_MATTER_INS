@@ -1,0 +1,8 @@
+// HIVEMIND
+// GENERATED PROTOBUF FILE
+
+syntax = "proto3";
+package hivemind;
+
+option go_package = "src/core/hivemind";
+

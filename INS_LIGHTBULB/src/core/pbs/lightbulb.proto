@@ -1,7 +1,7 @@
 syntax = "proto3";
-package lightblub;
+package HOLME_instance;
 
-option go_package = "src/core/lightblub";
+option go_package = "src/core/InstanceLightBulb";
 
 message lightBulbFrame {
   bool trigger = 1; //* true: on, false: off

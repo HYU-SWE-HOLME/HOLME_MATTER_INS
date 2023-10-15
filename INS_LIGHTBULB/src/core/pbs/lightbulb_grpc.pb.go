@@ -4,7 +4,7 @@
 // - protoc             v4.24.3
 // source: lightbulb.proto
 
-package lightblub
+package InstanceLightBulb
 
 import (
 	context "context"
@@ -35,7 +35,7 @@ func NewLightBulbClient(cc grpc.ClientConnInterface) LightBulbClient {
 
 func (c *lightBulbClient) HandleFrame(ctx context.Context, in *LightBulbFrame, opts ...grpc.CallOption) (*LightBulbRes, error) {
 	out := new(LightBulbRes)
-	err := c.cc.Invoke(ctx, "/lightblub.LightBulb/HandleFrame", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/HOLME_instance.LightBulb/HandleFrame", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _LightBulb_HandleFrame_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/lightblub.LightBulb/HandleFrame",
+		FullMethod: "/HOLME_instance.LightBulb/HandleFrame",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LightBulbServer).HandleFrame(ctx, req.(*LightBulbFrame))
@@ -92,7 +92,7 @@ func _LightBulb_HandleFrame_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var LightBulb_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "lightblub.LightBulb",
+	ServiceName: "HOLME_instance.LightBulb",
 	HandlerType: (*LightBulbServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

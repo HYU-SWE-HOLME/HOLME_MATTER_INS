@@ -1,13 +1,13 @@
 package handler
 
 import (
-	lightBulb "INS_LIGHTBULB/src/core"
+	InstanceLightBulb "INS_LIGHTBULB/src/core/pbs"
 	"INS_LIGHTBULB/src/features"
 	"context"
 )
 
 type InstanceHandler struct {
-	lightBulb.LightBulbServer
+	InstanceLightBulb.LightBulbServer
 }
 
 // * Map color in flag value
@@ -20,7 +20,7 @@ var colorMap = map[string]uint8{
 /*
 - It will handle the incoming frame, parse the data and handle the light bulb based on the data.
 */
-func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *lightBulb.LightBulbFrame) (*lightBulb.LightBulbRes, error) {
+func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *InstanceLightBulb.LightBulbFrame) (*InstanceLightBulb.LightBulbRes, error) {
 	//* Handle Incoming Frame.
 	trigger, degree, color := frame.Trigger, frame.Degree, frame.Color
 
@@ -30,5 +30,5 @@ func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *lightBul
 		features.PrintLightEnabled(int(degree), colorMap[color]) //* The light in on; print the dedicated values.
 	}
 
-	return &lightBulb.LightBulbRes{}, nil
+	return &InstanceLightBulb.LightBulbRes{}, nil
 }

@@ -1,9 +1,7 @@
-package handler
+package hivemind
 
 import (
-	instances "HIVEMIND/instances"
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -32,13 +30,7 @@ func RequestHandler() *http.ServeMux {
 			switch instanceType {
 			case 1: //* Instance Light Bulb
 				{
-					var lightBulb = instances.LightBulb{}
-					err := json.Unmarshal([]byte(frameData), &lightBulb)
-					if err != nil {
-						//* ERROR!!!!
-						panic("Error for handling light bulb payload.")
-					}
-					fmt.Println(lightBulb)
+					HandleLightBulb(frameData)
 				}
 
 			}
