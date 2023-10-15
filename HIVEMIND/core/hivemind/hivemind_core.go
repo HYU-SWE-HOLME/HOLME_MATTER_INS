@@ -2,9 +2,8 @@ package hivemind
 
 import (
 	"HIVEMIND/utils"
-	"google.golang.org/grpc"
 	"log"
-	"net"
+	"net/http"
 )
 
 const PORT string = "10000"
@@ -19,18 +18,11 @@ func Init() *Hivemind {
 
 func (hb *Hivemind) Start() error { //* Hivemind will initiated.
 
-	listener, err := net.Listen("tcp", ":"+PORT)
-	if err != nil {
-		log.Fatalf("ERROR! Occured at initialization phase of HIVEMIND.")
-		return err
-	}
-
-	grpServer := grpc.NewServer()
 	utils.PrintBanner()
 	log.Println("HIVEMIND is running... HOLME is now available for current environment!")
 
-	if err := grpServer.Serve(listener); err != nil {
-		log.Fatalf("ERROR! Occured at initialization phase of HIVEMIND.")
+	err := http.ListenAndServe(":"+PORT, RequestHandler())
+	if err != nil {
 		return err
 	}
 

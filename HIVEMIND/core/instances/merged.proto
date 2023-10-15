@@ -1,0 +1,23 @@
+// HIVEMIND
+// GENERATED PROTOBUF FILE
+
+syntax = "proto3";
+package HOLME_instance;
+
+option go_package = "src/core/hivemind";
+
+// INSTANCE - LIGHT BULB
+// INSTANCE NUMBER: 1
+
+message lightBulbFrame {
+  bool trigger = 1; //* true: on, false: off
+  int64 degree = 2;
+  string color = 3;
+}
+
+message lightBulbRes{}
+
+service LightBulb {
+  rpc HandleFrame(lightBulbFrame) returns(lightBulbRes);
+}
+

@@ -3,7 +3,6 @@ package hivemind
 import (
 	"HIVEMIND/instances"
 	"encoding/json"
-	"fmt"
 )
 
 func HandleLightBulb(frameData string) {
@@ -13,6 +12,5 @@ func HandleLightBulb(frameData string) {
 		//* ERROR!!!!
 		panic("Error for handling light bulb payload.")
 	}
-	fmt.Println(lightBulb) //TODO
-	SendFrameDataToLightBulb()
+	SendFrameDataToLightBulb(lightBulb.Trigger, lightBulb.Degree, lightBulb.Color)
 }

@@ -2,7 +2,7 @@
 // GENERATED PROTOBUF FILE
 
 syntax = "proto3";
-package hivemind;
+package HOLME_instance;
 
 option go_package = "src/core/hivemind";
 
