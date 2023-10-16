@@ -1,0 +1,19 @@
+syntax = "proto3";
+package HOLME_instance;
+
+option go_package = "src/core/InstanceCurtain";
+
+message curtainFrame {
+    bool isHorizontal = 1; // 0: vertical, 1: horizontal
+    bool isCenterMode = 2; // 0: side to side mode, 1: center mode
+    // 0 & horizontal: opened from right / 1 & horizontal: opened from left
+    // 0 & vertical: opened from down / 1 & vertical: opened from top
+    bool isLeftOrTop = 3; 
+    int64 degree = 4; // 0 - 100: how much curtains are drawn
+}
+
+message curtainRes{}
+
+service Curtain {
+  rpc HandleFrame(curtainFrame) returns(curtainRes);
+}
