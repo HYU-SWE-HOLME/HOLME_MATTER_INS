@@ -4,7 +4,6 @@ import (
 	"HIVEMIND/core/constants"
 	instancePb "HIVEMIND/core/instances"
 	"context"
-	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"log"
@@ -39,13 +38,12 @@ func SendFrameDataToLightBulb(
 	//* test
 	req := &instancePb.LightBulbFrame{Trigger: trigger, Degree: int64(degree), Color: color}
 
-	res, err := client.HandleFrame(context.Background(), req)
+	_, err = client.HandleFrame(context.Background(), req)
 
 	if err != nil {
 		log.Fatalf("Error while handling lightbulb request, %v", err)
 		return false
 	}
-	fmt.Println(res)
 
 	return true
 }

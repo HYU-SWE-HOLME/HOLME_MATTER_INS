@@ -5,12 +5,27 @@ import (
 	"encoding/json"
 )
 
-func HandleLightBulb(frameData string) {
+func HandleLightBulb(frameData string) InstanceResponse {
 	var lightBulb = instances.LightBulb{}
 	err := json.Unmarshal([]byte(frameData), &lightBulb)
 	if err != nil {
 		//* ERROR!!!!
-		panic("Error for handling light bulb payload.")
+		return InstanceResponse{
+			ERROR,
+			err,
+		}
 	}
-	SendFrameDataToLightBulb(lightBulb.Trigger, lightBulb.Degree, lightBulb.Color)
+	if res := SendFrameDataToLightBulb(lightBulb.Trigger, lightBulb.Degree, lightBulb.Color); !res {
+		//* Substitution Required.
+		return InstanceResponse{
+			NO_DEVICE,
+			nil,
+		}
+	}
+
+	//* IoT Setting Applied.
+	return InstanceResponse{
+		SUCCESSFUL,
+		nil,
+	}
 }
