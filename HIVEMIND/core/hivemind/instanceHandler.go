@@ -40,6 +40,7 @@ func SendFrameDataToLightBulb(
 	req := &instancePb.LightBulbFrame{Trigger: trigger, Degree: int64(degree), Color: color}
 
 	_, err = client.HandleFrame(context.Background(), req)
+	//* TODO: Add response handler
 
 	if err != nil {
 		log.Fatalf("Error while handling lightbulb request, %v", err)
@@ -77,6 +78,7 @@ func SendFrameDataToCurtain(
 	req := &instancePb.CurtainFrame{IsHorizontal: isHorizontal, IsCenterMode: isCentreMode, IsLeftOrTop: isLeft, Degree: degree}
 
 	_, err = client.HandleFrame(context.Background(), req)
+	//* TODO: Add response handler
 
 	if err != nil {
 		log.Fatalf("Error while handling curtain request, %v", err)

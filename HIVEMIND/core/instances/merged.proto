@@ -15,7 +15,10 @@ message curtainFrame {
     int64 degree = 4; // 0 - 100: how much curtains are drawn
 }
 
-message curtainRes{}
+message curtainRes{
+  bool status = 1;
+  string error = 2;
+}
 
 service Curtain {
   rpc HandleFrame(curtainFrame) returns(curtainRes);
@@ -28,7 +31,10 @@ message lightBulbFrame {
   string color = 3;
 }
 
-message lightBulbRes{}
+message lightBulbRes{
+  bool status = 1;
+  string error = 2;
+}
 
 service LightBulb {
   rpc HandleFrame(lightBulbFrame) returns(lightBulbRes);

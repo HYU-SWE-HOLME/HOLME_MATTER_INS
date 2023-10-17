@@ -24,5 +24,5 @@ func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *Instance
 		features.PrintOpenedCurtain()
 	}
 
-	return &InstanceCurtain.CurtainRes{}, nil
+	return &InstanceCurtain.CurtainRes{Status: true, Error: ""}, nil
 }

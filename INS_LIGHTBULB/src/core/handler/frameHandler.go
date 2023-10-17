@@ -30,5 +30,8 @@ func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *Instance
 		features.PrintLightEnabled(int(degree), colorMap[color]) //* The light in on; print the dedicated values.
 	}
 
-	return &InstanceLightBulb.LightBulbRes{}, nil
+	return &InstanceLightBulb.LightBulbRes{
+		Status: true,
+		Error:  "",
+	}, nil
 }

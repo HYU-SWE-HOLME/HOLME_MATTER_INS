@@ -12,7 +12,10 @@ message curtainFrame {
     int64 degree = 4; // 0 - 100: how much curtains are drawn
 }
 
-message curtainRes{}
+message curtainRes{
+  bool status = 1;
+  string error = 2;
+}
 
 service Curtain {
   rpc HandleFrame(curtainFrame) returns(curtainRes);
