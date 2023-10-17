@@ -6,3 +6,10 @@ type LightBulb struct {
 	Degree  int
 	Color   string
 }
+
+type Curtain struct {
+	IsHorizontal bool
+	IsCenterMode bool
+	IsLeftOrTop  bool
+	Degree       int
+}

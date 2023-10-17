@@ -1,0 +1,8 @@
+{
+  "testcase_curtain":
+  {
+    "__scenario__": "Curtain - Open Vertical, Sided Top Curtain model with 100 degree",
+    "instance": 2,
+    "payload": "{\"isHorizontal\":false,\"isCenterMode\":false,\"isLeftOrTop\":false,\"degree\":100}"
+  }
+}

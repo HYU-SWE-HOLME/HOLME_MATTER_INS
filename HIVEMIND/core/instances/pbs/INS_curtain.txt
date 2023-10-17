@@ -1,11 +1,3 @@
-// HIVEMIND
-// GENERATED PROTOBUF FILE
-
-syntax = "proto3";
-package HOLME_instance;
-
-option go_package = "src/core/hivemind";
-
 message curtainFrame {
     bool isHorizontal = 1; // 0: vertical, 1: horizontal
     bool isCenterMode = 2; // 0: side to side mode, 1: center mode
@@ -19,18 +11,4 @@ message curtainRes{}
 
 service Curtain {
   rpc HandleFrame(curtainFrame) returns(curtainRes);
-}// INSTANCE - LIGHT BULB
-// INSTANCE NUMBER: 1
-
-message lightBulbFrame {
-  bool trigger = 1; //* true: on, false: off
-  int64 degree = 2;
-  string color = 3;
 }
-
-message lightBulbRes{}
-
-service LightBulb {
-  rpc HandleFrame(lightBulbFrame) returns(lightBulbRes);
-}
-

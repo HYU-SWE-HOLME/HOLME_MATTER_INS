@@ -1,0 +1,11 @@
+{
+  "testcase_lightbulb":
+  {
+    "__scenario__": "LightBulb - Turn the light yellow with degree 70",
+    "instance": 1,
+    "payload": "{\"trigger\":true,\"degree\":70,\"color\":\"yellow\"}"
+  }
+}
+
+
+

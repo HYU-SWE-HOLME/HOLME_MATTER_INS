@@ -29,3 +29,28 @@ func HandleLightBulb(frameData string) InstanceResponse {
 		nil,
 	}
 }
+
+func HandleCurtain(frameData string) InstanceResponse {
+	var curtain = instances.Curtain{}
+	err := json.Unmarshal([]byte(frameData), &curtain)
+	if err != nil {
+		//* ERROR!!!!
+		return InstanceResponse{
+			ERROR,
+			err,
+		}
+	}
+	if res := SendFrameDataToCurtain(curtain.IsHorizontal, curtain.IsCenterMode, curtain.IsLeftOrTop, int64(curtain.Degree)); !res {
+		//* Substitution Required.
+		return InstanceResponse{
+			NO_DEVICE,
+			nil,
+		}
+	}
+
+	//* IoT Setting Applied.
+	return InstanceResponse{
+		SUCCESSFUL,
+		nil,
+	}
+}

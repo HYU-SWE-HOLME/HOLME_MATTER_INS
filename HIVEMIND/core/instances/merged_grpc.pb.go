@@ -18,6 +18,92 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
+// CurtainClient is the client API for Curtain service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CurtainClient interface {
+	HandleFrame(ctx context.Context, in *CurtainFrame, opts ...grpc.CallOption) (*CurtainRes, error)
+}
+
+type curtainClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCurtainClient(cc grpc.ClientConnInterface) CurtainClient {
+	return &curtainClient{cc}
+}
+
+func (c *curtainClient) HandleFrame(ctx context.Context, in *CurtainFrame, opts ...grpc.CallOption) (*CurtainRes, error) {
+	out := new(CurtainRes)
+	err := c.cc.Invoke(ctx, "/HOLME_instance.Curtain/HandleFrame", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CurtainServer is the server API for Curtain service.
+// All implementations must embed UnimplementedCurtainServer
+// for forward compatibility
+type CurtainServer interface {
+	HandleFrame(context.Context, *CurtainFrame) (*CurtainRes, error)
+	mustEmbedUnimplementedCurtainServer()
+}
+
+// UnimplementedCurtainServer must be embedded to have forward compatible implementations.
+type UnimplementedCurtainServer struct {
+}
+
+func (UnimplementedCurtainServer) HandleFrame(context.Context, *CurtainFrame) (*CurtainRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HandleFrame not implemented")
+}
+func (UnimplementedCurtainServer) mustEmbedUnimplementedCurtainServer() {}
+
+// UnsafeCurtainServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CurtainServer will
+// result in compilation errors.
+type UnsafeCurtainServer interface {
+	mustEmbedUnimplementedCurtainServer()
+}
+
+func RegisterCurtainServer(s grpc.ServiceRegistrar, srv CurtainServer) {
+	s.RegisterService(&Curtain_ServiceDesc, srv)
+}
+
+func _Curtain_HandleFrame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CurtainFrame)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CurtainServer).HandleFrame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/HOLME_instance.Curtain/HandleFrame",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CurtainServer).HandleFrame(ctx, req.(*CurtainFrame))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// Curtain_ServiceDesc is the grpc.ServiceDesc for Curtain service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Curtain_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "HOLME_instance.Curtain",
+	HandlerType: (*CurtainServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "HandleFrame",
+			Handler:    _Curtain_HandleFrame_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "merged.proto",
+}
+
 // LightBulbClient is the client API for LightBulb service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.

@@ -12,6 +12,8 @@ type InstanceFrame struct {
 	Payload  string `json:"payload"`
 }
 
+type HandleFrameFunction func(string) InstanceResponse
+
 func sendResponse(body RESTResponse, wr http.ResponseWriter) error {
 	wr.Header().Set("Content-Type", "application/json")
 	wr.WriteHeader(http.StatusCreated) //* Indicate Response Created, regardless if the request was successful.
@@ -21,6 +23,31 @@ func sendResponse(body RESTResponse, wr http.ResponseWriter) error {
 	}
 
 	return nil
+}
+
+func handleFrame(handler HandleFrameFunction, frameData string, instanceName string, wr http.ResponseWriter) InstanceResponse {
+	res := handler(frameData)
+
+	switch res.Ok {
+	case SUCCESSFUL:
+		{
+			SuccessfulLog(fmt.Sprintf("Successfully Applied %s Settings", instanceName))
+
+			resp := RESTResponse{SUCCESSFUL}
+
+			err := sendResponse(resp, wr)
+			if err != nil {
+				ErrorLog(fmt.Sprintf("Error while responding to the server - %v", err))
+			}
+		}
+	case NO_DEVICE:
+		{
+			//WarningLog("There")
+		}
+
+	}
+
+	return res
 }
 
 func RequestHandler() *http.ServeMux {
@@ -46,28 +73,14 @@ func RequestHandler() *http.ServeMux {
 			switch instanceType {
 			case 1: //* Instance Light Bulb
 				{
-					res := HandleLightBulb(frameData)
-
-					switch res.Ok {
-					case SUCCESSFUL:
-						{
-							SuccessfulLog("Successfully Applied Light Settings")
-
-							resp := RESTResponse{SUCCESSFUL}
-
-							err := sendResponse(resp, wr)
-							if err != nil {
-								ErrorLog(fmt.Sprintf("Error while responding to the server - %v", err))
-							}
-						}
-					case NO_DEVICE:
-						{
-							//WarningLog("There")
-						}
-
-					}
+					_ = handleFrame(HandleLightBulb, frameData, "Light Bulb", wr)
+					//* TODO: handling response required
 				}
-
+			case 2: //* Instance Curtain
+				{
+					_ = handleFrame(HandleCurtain, frameData, "Curtain", wr)
+					//* TODO: handling response required
+				}
 			}
 		}
 	})
