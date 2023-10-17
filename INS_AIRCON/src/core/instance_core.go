@@ -2,7 +2,7 @@ package aircon
 
 import (
 	frameHandler "INS_AIRCON/src/core/handler"
-	curtainProto "INS_AIRCON/src/core/pbs"
+	airconProto "INS_AIRCON/src/core/pbs"
 	"INS_AIRCON/src/features"
 	"INS_AIRCON/src/terminal"
 	"log"
@@ -29,7 +29,7 @@ func (lb *Aircon) Start() error {
 	}
 
 	grpcServer := grpc.NewServer()
-	curtainProto.RegisterAirconServer(grpcServer, &frameHandler.InstanceHandler{})
+	airconProto.RegisterAirconServer(grpcServer, &frameHandler.InstanceHandler{})
 	//* Aircon will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
 	log.Printf("INSTANCE AIRCON IN RUNNING...")

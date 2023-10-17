@@ -16,13 +16,6 @@ type InstanceHandler struct {
 */
 func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *InstanceCurtain.CurtainFrame) (*InstanceCurtain.CurtainRes, error) {
 	degree := frame.Degree
-
-	if degree < 50 {
-		features.PrintClosedCurtain()
-
-	} else {
-		features.PrintOpenedCurtain()
-	}
-
+	features.PrintCurtain(int(degree))
 	return &InstanceCurtain.CurtainRes{Status: true, Error: ""}, nil
 }

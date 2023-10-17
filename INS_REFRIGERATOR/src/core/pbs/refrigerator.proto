@@ -1,0 +1,17 @@
+syntax = "proto3";
+package HOLME_instance;
+
+option go_package = "src/core/InstanceRefrigerator";
+
+message refrigeratorFrame {
+    bool trigger = 1; // 0: off, 1: on
+}
+
+message refrigeratorRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Refrigerator {
+  rpc HandleFrame(refrigeratorFrame) returns(refrigeratorRes);
+}

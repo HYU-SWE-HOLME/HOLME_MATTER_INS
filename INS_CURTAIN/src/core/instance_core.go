@@ -34,8 +34,8 @@ func (lb *Curtain) Start() error {
 	log.Printf("Starting Instance...")
 	log.Printf("INSTANCE CURTAIN IN RUNNING...")
 
-	terminal.ClearTerminal()      //* Clears Terminal, starts initialization.
-	features.PrintClosedCurtain() //* Prints the default images as a initial state.
+	terminal.ClearTerminal()  //* Clears Terminal, starts initialization.
+	features.PrintCurtain(10) //* Prints the default images as a initial state.
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to initate features: %v", err)
 		return err
