@@ -64,8 +64,8 @@ func readImageFile(trigger bool) []byte {
 func PrintAirconOn(temperature int, degree int) {
 	buf := readImageFile(true)
 	terminal.ClearTerminal() //* Clear the terminal first.
-	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(true, temperature, degree))
+	color.White(string(buf))
+	color.White(returnFormattedMsg(true, temperature, degree))
 }
 
 // PrintAirconOff
@@ -80,6 +80,6 @@ func PrintAirconOn(temperature int, degree int) {
 func PrintAirconOff(temperature int, degree int) {
 	buf := readImageFile(false)
 	terminal.ClearTerminal() //* Clear the terminal first.
-	color.White(string(buf))
-	color.White(returnFormattedMsg(false, temperature, degree))
+	color.HiBlack(string(buf))
+	color.HiBlack(returnFormattedMsg(false, temperature, degree))
 }

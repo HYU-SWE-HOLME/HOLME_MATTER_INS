@@ -9,7 +9,10 @@ message airconFrame {
     int64 windDegree = 3; // air conditioner intensity
 }
 
-message airconRes{}
+message airconRes{
+  bool status = 1;
+  string error = 2;
+}
 
 service Aircon {
   rpc HandleFrame(airconFrame) returns(airconRes);

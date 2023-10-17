@@ -21,5 +21,5 @@ func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *Instance
 	} else { // off
 		features.PrintAirconOff(int(temperature), int(degree))
 	}
-	return &InstanceAircon.AirconRes{}, nil
+	return &InstanceAircon.AirconRes{Status: true, Error: ""}, nil
 }
