@@ -98,7 +98,7 @@ func PrintClosedCurtain() {
 // PrintOpenedCurtain
 /*
 - Prints opened curtain.
-- Reads opned curtain image and prints it.
+- Reads opened curtain image and prints it.
 - Parameter:
   - none
 
@@ -109,5 +109,5 @@ func PrintOpenedCurtain() {
 	buf := readImageFile(100)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(false, false, false, 0))
+	color.HiBlack(returnFormattedMsg(false, false, false, 100))
 }
