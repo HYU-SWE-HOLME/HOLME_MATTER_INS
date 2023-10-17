@@ -46,7 +46,11 @@ func returnFormattedMsg(isHorizontal bool, isCenterMode bool, isLeftOrTop bool, 
 		}
 	}
 	curtainState += " / " + strconv.Itoa(degree)
-	return "Curtain type: " + curtainType + "\n" + "State of the curtain: ed from " + curtainState + "%"
+	if degree < 50 {
+		return "Curtain type: " + curtainType + "\n" + "State of the curtain: closed from the " + curtainState + "%"
+	} else {
+		return "Curtain type: " + curtainType + "\n" + "State of the curtain: opened from the " + curtainState + "%"
+	}
 }
 
 // readImageFile
@@ -87,8 +91,8 @@ func readImageFile(degree int) []byte {
 func PrintClosedCurtain() {
 	buf := readImageFile(0)
 	terminal.ClearTerminal() //* Clear the terminal first.
-	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(false, false, false, 0))
+	color.White(string(buf))
+	color.White(returnFormattedMsg(false, false, false, 0))
 }
 
 // PrintOpenedCurtain
