@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-const AcPort string = "10003" //* Instance Aircon will use port 10002
+const AcPort string = "10003" //* Instance Aircon will use port 10003
 
 type Aircon struct {
 }

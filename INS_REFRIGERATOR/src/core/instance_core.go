@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-const RfPort string = "10004" //* Instance Refrigerator will use port 10002
+const RfPort string = "10004" //* Instance Refrigerator will use port 10004
 
 type Refrigerator struct {
 }
