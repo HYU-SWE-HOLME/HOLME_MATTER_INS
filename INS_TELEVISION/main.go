@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	//* Initiate Refrigerator Instance
+	//* Initiate Television Instance
 	tv := television.Init()
 	err := tv.Start()
 	if err != nil {
