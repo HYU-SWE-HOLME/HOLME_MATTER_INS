@@ -34,8 +34,8 @@ func (lb *Refrigerator) Start() error {
 	log.Printf("Starting Instance...")
 	log.Printf("INSTANCE REFRIGERATOR IN RUNNING...")
 
-	terminal.ClearTerminal()         //* Clears Terminal, starts initialization.
-	features.PrintRefrigerator(true) //* Prints the default images as a initial state.
+	terminal.ClearTerminal()          //* Clears Terminal, starts initialization.
+	features.PrintRefrigerator(false) //* Prints the default images as a initial state.
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to initate features: %v", err)
 		return err

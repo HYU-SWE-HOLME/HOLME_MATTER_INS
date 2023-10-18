@@ -1,0 +1,25 @@
+{
+    "testcase_lightbulb_1":
+    {
+        "__scenario__": "light turned off",
+        "trigger": false,
+        "degree": 0,
+        "color": "white"
+    },
+
+    "testcase_lightbulb_2":
+    {
+        "__scenario__": "light turned on after key card is inserted",
+        "trigger": true,
+        "degree": 100,
+        "color": "white"
+    },
+
+    "testcase_lightbulb_3":
+    {
+        "__scenario__": "weak light(nap mode)",
+        "trigger": true,
+        "degree": 20,
+        "color": "yellow"
+    }
+}
