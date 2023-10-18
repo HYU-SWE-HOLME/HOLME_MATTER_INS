@@ -32,7 +32,7 @@ func (lb *Refrigerator) Start() error {
 	refrigeratorProto.RegisterRefrigeratorServer(grpcServer, &frameHandler.InstanceHandler{})
 	//* Refrigerator will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
-	log.Printf("INSTANCE REFRIGERATOR IN RUNNING...")
+	log.Printf("INSTANCE REFRIGERATOR RUNNING...")
 
 	terminal.ClearTerminal()          //* Clears Terminal, starts initialization.
 	features.PrintRefrigerator(false) //* Prints the default images as a initial state.

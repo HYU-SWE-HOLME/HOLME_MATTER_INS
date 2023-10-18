@@ -32,7 +32,7 @@ func (lb *Aircon) Start() error {
 	airconProto.RegisterAirconServer(grpcServer, &frameHandler.InstanceHandler{})
 	//* Aircon will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
-	log.Printf("INSTANCE AIRCON IN RUNNING...")
+	log.Printf("INSTANCE AIRCON RUNNING...")
 
 	terminal.ClearTerminal()       //* Clears Terminal, starts initialization.
 	features.PrintAirconOff(-1, 0) //* Prints the default images as a initial state.

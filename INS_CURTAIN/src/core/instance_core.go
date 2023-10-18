@@ -32,7 +32,7 @@ func (lb *Curtain) Start() error {
 	curtainProto.RegisterCurtainServer(grpcServer, &frameHandler.InstanceHandler{})
 	//* Curtain will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
-	log.Printf("INSTANCE CURTAIN IN RUNNING...")
+	log.Printf("INSTANCE CURTAIN RUNNING...")
 
 	terminal.ClearTerminal()  //* Clears Terminal, starts initialization.
 	features.PrintCurtain(10) //* Prints the default images as a initial state.

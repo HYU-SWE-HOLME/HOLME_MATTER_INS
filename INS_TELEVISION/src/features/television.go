@@ -1,7 +1,7 @@
 package features
 
 import (
-	"INS_REFRIGERATOR/src/terminal"
+	"INS_TELEVISION/src/terminal"
 	"os"
 
 	"github.com/fatih/color"
@@ -18,9 +18,9 @@ import (
 */
 func returnFormattedMsg(trigger bool) string {
 	if trigger {
-		return "Refrigerator screen: ON"
+		return "Television: Music ON"
 	} else {
-		return "Refrigerator screen: OFF"
+		return "Television: Music OFF"
 	}
 }
 
@@ -28,34 +28,44 @@ func returnFormattedMsg(trigger bool) string {
 /*
 - It reads the image file, return the byte array available to print.
 - Parameter:
-  - trigger -> 0: off, 1: on
+  - trigger -> 0: music off, 1: music on
 
 - Return Value: []byte
 	- It returns printable byte array.
 */
-func readImageFile() []byte {
-	buf, err := os.ReadFile("src/raw/default.txt")
-	if err != nil {
-		panic(err)
+func readImageFile(trigger bool) []byte {
+	if trigger {
+		buf, err := os.ReadFile("src/raw/on.txt")
+		if err != nil {
+			panic(err)
+		}
+		return buf
+	} else {
+		buf, err := os.ReadFile("src/raw/off.txt")
+		if err != nil {
+			panic(err)
+		}
+		return buf
 	}
-	return buf
 }
 
-// PrintRefrigerator
+// PrintTelevision
 /*
-- Reads refrigerator image and prints it.
+- Reads television image and prints it.
 - Parameter:
-	- trigger: bool -> 0: sleep mode off, 1: sleep mode on
+	- trigger: bool -> 0: music off, 1: musinc on
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintRefrigerator(trigger bool) {
-	buf := readImageFile()
-	terminal.ClearTerminal() //* Clear the terminal first.
+func PrintTelevision(trigger bool) {
 	if trigger {
+		buf := readImageFile(true)
+		terminal.ClearTerminal() //* Clear the terminal first.
 		color.White(string(buf))
 		color.White(returnFormattedMsg(true))
 	} else {
+		buf := readImageFile(false)
+		terminal.ClearTerminal() //* Clear the terminal first.
 		color.HiBlack(string(buf))
 		color.HiBlack(returnFormattedMsg(false))
 	}

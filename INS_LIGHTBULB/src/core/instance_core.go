@@ -5,9 +5,10 @@ import (
 	lightBulb "INS_LIGHTBULB/src/core/pbs"
 	"INS_LIGHTBULB/src/features"
 	"INS_LIGHTBULB/src/terminal"
-	"google.golang.org/grpc"
 	"log"
 	"net"
+
+	"google.golang.org/grpc"
 )
 
 const LbPort string = "10001" //* Instance Light Bulb will use port 10001
@@ -31,7 +32,7 @@ func (lb *LightBulb) Start() error {
 	lightBulb.RegisterLightBulbServer(grpcServer, &frameHandler.InstanceHandler{})
 	//* Light bulb will use grpcServer, initialize it with frame handler.
 	log.Printf("Starting Instance...")
-	log.Printf("💡💡INSTANCE LIGHTBULB IN RUNNING...💡💡")
+	log.Printf("💡💡INSTANCE LIGHTBULB RUNNING...💡💡")
 
 	terminal.ClearTerminal()      //* Clears Terminal, starts initialization.
 	features.PrintLightDisabled() //* Prints the default images as a initial state.
