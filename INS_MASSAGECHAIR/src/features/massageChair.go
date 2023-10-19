@@ -1,7 +1,7 @@
 package features
 
 import (
-	"INS_TELEVISION/src/terminal"
+	"INS_MASSAGECHAIR/src/terminal"
 	"os"
 
 	"github.com/fatih/color"
@@ -11,16 +11,16 @@ import (
 /*
   - It formats the message and returns the proper message.
 - Parameter:
-  - trigger: bool -> 0: off, 1: on
+  - trigger(sleep mode): bool -> 0: off, 1: on
 
 - Return Value: string
 	- Returns formatted message.
 */
 func returnFormattedMsg(trigger bool) string {
 	if trigger {
-		return "Television: Music ON"
+		return "MassageChair: ON"
 	} else {
-		return "Television: Music OFF"
+		return "MassageChair: OFF"
 	}
 }
 
@@ -49,15 +49,15 @@ func readImageFile(trigger bool) []byte {
 	}
 }
 
-// PrintTelevision
+// PrintMassageChair
 /*
-- Reads television image and prints it.
+- Reads massageChair image and prints it.
 - Parameter:
 	- trigger: bool -> 0: music off, 1: musinc on
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintTelevision(trigger bool) {
+func PrintMassageChair(trigger bool) {
 	if trigger {
 		buf := readImageFile(true)
 		terminal.ClearTerminal() //* Clear the terminal first.
