@@ -14,6 +14,6 @@ func main() {
 	sb := soundbar.Init()
 	err := sb.Start()
 	if err != nil {
-		log.Fatalf("FATAL ERROR (Instance 4 - Refrigerator): %v", err)
+		log.Fatalf("FATAL ERROR (Instance 7 - Soundbar): %v", err)
 	}
 }
