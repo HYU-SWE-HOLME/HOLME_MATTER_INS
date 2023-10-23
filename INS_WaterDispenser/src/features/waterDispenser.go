@@ -64,17 +64,17 @@ func PrintWaterDispenser(triggerReminder bool, triggerWater bool) {
 	if !triggerReminder { // before medication reminder
 		buf := readImageFile(false)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(false, false))
+		color.White(string(buf))
+		color.White(returnFormattedMsg(false, false))
 	} else if !triggerWater { // after medication reminder, before users says "give me wagter"
 		buf := readImageFile(false)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.White(string(buf))
-		color.White(returnFormattedMsg(true, false))
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(true, false))
 	} else { // after medication reminder, after users says "give me wagter"
 		buf := readImageFile(true)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.White(string(buf))
-		color.White(returnFormattedMsg(true, true))
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(true, true))
 	}
 }

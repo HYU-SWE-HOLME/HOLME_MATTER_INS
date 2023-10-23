@@ -72,12 +72,12 @@ func PrintCurtain(degree int) {
 	if degree < 50 { // closed(down)
 		buf := readImageFile(0)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(false, false, false, degree))
+		color.White(string(buf))
+		color.White(returnFormattedMsg(false, false, false, degree))
 	} else { //opened(up)
 		buf := readImageFile(100)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.White(string(buf))
-		color.White(returnFormattedMsg(false, false, false, degree))
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(false, false, false, degree))
 	}
 }

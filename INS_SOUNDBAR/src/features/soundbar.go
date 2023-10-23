@@ -61,12 +61,12 @@ func PrintSoundbar(trigger bool) {
 	if trigger {
 		buf := readImageFile(true)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.White(string(buf))
-		color.White(returnFormattedMsg(true))
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(true))
 	} else {
 		buf := readImageFile(false)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(false))
+		color.White(string(buf))
+		color.White(returnFormattedMsg(false))
 	}
 }

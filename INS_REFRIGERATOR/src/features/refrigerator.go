@@ -53,10 +53,10 @@ func PrintRefrigerator(trigger bool) {
 	buf := readImageFile()
 	terminal.ClearTerminal() //* Clear the terminal first.
 	if trigger {
-		color.White(string(buf))
-		color.White(returnFormattedMsg(true))
-	} else {
 		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(false))
+		color.HiBlack(returnFormattedMsg(true))
+	} else {
+		color.White(string(buf))
+		color.White(returnFormattedMsg(false))
 	}
 }
