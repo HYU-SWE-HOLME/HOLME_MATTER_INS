@@ -1,0 +1,17 @@
+{
+	"testcase_aircon_1":
+	{	
+		"__scenario__": "aircon turned off",
+		"trigger": false,
+		"temperature": -1,
+		"windDegree": 0
+	},
+
+	"testcase_aircon_2":
+	{	
+		"__scenario__": "aircon turned on after key card is inserted",
+		"trigger": true,
+		"temperature": 22,
+		"windDegree": 5
+	}
+}

@@ -1,0 +1,13 @@
+{
+    "testcase_soundbar_1":
+	{
+		"__scenario__": "soundbar music turned off",
+		"trigger": false
+	},
+
+	"testcase_soundbar_2":
+	{
+		"__scenario__": "soundbar music turned on",
+		"trigger": true
+	}	
+}

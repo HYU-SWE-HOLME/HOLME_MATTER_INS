@@ -1,0 +1,13 @@
+{
+    "testcase_television_1":
+	{
+		"__scenario__": "television music turned off",
+		"trigger": false
+	},
+
+	"testcase_television_2":
+	{
+		"__scenario__": "television music turned on",
+		"trigger": true
+	}	
+}

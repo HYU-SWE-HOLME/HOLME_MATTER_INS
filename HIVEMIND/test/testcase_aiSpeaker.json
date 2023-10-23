@@ -1,0 +1,13 @@
+{
+	"testcase_aiSpeaker_1":
+	{	
+		"__scenario__": "aiSpeaker turned off",
+		"trigger": false
+	},
+
+	"testcase_aiSpeaker_2":
+	{	
+		"__scenario__": "aiSpeaker turned on",
+		"trigger": true
+	}
+}

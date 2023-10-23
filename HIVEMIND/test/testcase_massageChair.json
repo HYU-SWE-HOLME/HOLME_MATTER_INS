@@ -1,0 +1,13 @@
+{
+    "testcase_massageChair_1":
+	{
+		"__scenario__": "massageChair turned off",
+		"trigger": false
+	},
+
+	"testcase_massageChair_2":
+	{
+		"__scenario__": "massageChair turned on",
+		"trigger": true
+	}	
+}
