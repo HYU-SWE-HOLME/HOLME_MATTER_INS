@@ -1,0 +1,17 @@
+syntax = "proto3";
+package HOLME_instance;
+
+option go_package = "src/core/InstanceAiSpeaker";
+
+message aiSpeakerFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+}
+
+message aiSpeakerRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service AiSpeaker {
+  rpc HandleFrame(aiSpeakerFrame) returns(aiSpeakerRes);
+}
