@@ -1,13 +1,15 @@
 {
-    "testcase_refrigerator_1":
+	"testcase_refrigerator_1":
 	{
-		"__scenario__": "refrigerator screen turned off(nap mode / key card is not inserted)",
-		"trigger": false
+	  "__scenario__": "refrigerator screen turned off(nap mode / key card is not inserted)",
+	  "instance": 4,
+	  "payload": "{\"trigger\":false}"
 	},
 
 	"testcase_refrigerator_2":
 	{
-		"__scenario__": "refrigerator screen turned on when key card is inserted",
-		"trigger": true
+	  "__scenario__": "refrigerator screen turned on when key card is inserted",
+	  "instance": 4,
+	  "payload": "{\"trigger\":true}"
 	}	
 }

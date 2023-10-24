@@ -1,13 +1,15 @@
 {
-	"testcase_aiSpeaker_1":
-	{	
+	"testcase_aispeaker_1":
+	{
 		"__scenario__": "aiSpeaker turned off",
-		"trigger": false
+		"instance": 9,
+		"payload": "{\"trigger\":false,\"replacementMsg\": \"\"}"
 	},
 
 	"testcase_aiSpeaker_2":
-	{	
-		"__scenario__": "aiSpeaker turned on",
-		"trigger": true
+	{
+		"__scenario__": "aiSpeaker turned off",
+		"instance": 9,
+		"payload": "{\"trigger\":true,\"replacementMsg\": \"There is a soundbar in this hotel\"}"
 	}
 }
