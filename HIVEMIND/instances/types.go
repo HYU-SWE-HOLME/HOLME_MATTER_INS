@@ -50,5 +50,6 @@ type MassageChair struct {
 
 // AiSpeaker * Instance 9: AI Speaker
 type AiSpeaker struct {
-	Trigger bool
+	Trigger        bool
+	ReplacementMsg string
 }

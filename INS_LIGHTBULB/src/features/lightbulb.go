@@ -2,9 +2,10 @@ package features
 
 import (
 	"INS_LIGHTBULB/src/terminal"
-	"github.com/fatih/color"
 	"os"
 	"strconv"
+
+	"github.com/fatih/color"
 )
 
 //returnFormattedMsg
@@ -58,8 +59,8 @@ func readImageFile() []byte {
 func PrintLightDisabled() {
 	buf := readImageFile()
 	terminal.ClearTerminal() //* Clear the terminal first.
-	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(false, 0, ""))
+	color.White(string(buf))
+	color.White(returnFormattedMsg(false, 0, ""))
 }
 
 func PrintLightEnabled(degree int, flag uint8) {
@@ -71,8 +72,8 @@ func PrintLightEnabled(degree int, flag uint8) {
 	switch flag {
 	case 0:
 		{ //* Default Light
-			color.White(string(buf))
-			color.White(returnFormattedMsg(true, degree, "WHITE"))
+			color.HiBlack(string(buf))
+			color.HiBlack(returnFormattedMsg(true, degree, "WHITE"))
 		}
 	case 1:
 		{ //* Yellow Light

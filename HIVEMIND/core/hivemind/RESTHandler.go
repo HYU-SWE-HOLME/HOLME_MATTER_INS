@@ -81,6 +81,41 @@ func RequestHandler() *http.ServeMux {
 					_ = handleFrame(HandleCurtain, frameData, "Curtain", wr)
 					//* TODO: handling response required
 				}
+			case 3: // Instance Aircon
+				{
+					_ = handleFrame(HandleAircon, frameData, "Aircon", wr)
+					//* TODO: handling response required
+				}
+			case 4: // Instance Refrigerator
+				{
+					_ = handleFrame(HandleRefrigerator, frameData, "Refrigerator", wr)
+					//* TODO: handling response required
+				}
+			case 5: // Instance Water Dispenser
+				{
+					_ = handleFrame(HandleWaterDispenser, frameData, "WaterDispenser", wr)
+					//* TODO: handling response required
+				}
+			case 6: // Instance Television
+				{
+					_ = handleFrame(HandleTelevision, frameData, "Television", wr)
+					//* TODO: handling response required
+				}
+			case 7: // Instance Soundbar
+				{
+					_ = handleFrame(HandleSoundbar, frameData, "Soundbar", wr)
+					//* TODO: handling response required
+				}
+			case 8: // Instance Massage Chair
+				{
+					_ = handleFrame(HandleMassageChair, frameData, "MassageChair", wr)
+					//* TODO: handling response required
+				}
+			case 9: // Instance AI Speaker
+				{
+					_ = handleFrame(HandleAiSpeaker, frameData, "AiSpeaker", wr)
+					//* TODO: handling response required
+				}
 			}
 		}
 	})

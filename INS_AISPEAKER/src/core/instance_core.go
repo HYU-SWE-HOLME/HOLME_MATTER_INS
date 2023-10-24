@@ -34,8 +34,8 @@ func (lb *AiSpeaker) Start() error {
 	log.Printf("Starting Instance...")
 	log.Printf("INSTANCE AISPEAKER RUNNING...")
 
-	terminal.ClearTerminal()       //* Clears Terminal, starts initialization.
-	features.PrintAiSpeaker(false) //* Prints the default images as a initial state.
+	terminal.ClearTerminal()           //* Clears Terminal, starts initialization.
+	features.PrintAiSpeaker(false, "") //* Prints the default images as a initial state.
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to initate features: %v", err)
 		return err

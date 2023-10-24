@@ -18,11 +18,11 @@ import (
 - Return Value: string
 	- Returns formatted message.
 */
-func returnFormattedMsg(trigger bool) string {
+func returnFormattedMsg(trigger bool, replacementMsg string) string {
 	if !trigger {
 		return "AI Speaker state: OFF"
 	} else {
-		return "AI Speaker state: ON"
+		return "AI Speaker state: ON\nReplacement Message: " + replacementMsg
 	}
 }
 
@@ -59,15 +59,15 @@ func readImageFile(trigger bool) []byte {
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintAiSpeaker(trigger bool) {
+func PrintAiSpeaker(trigger bool, replacementMsg string) {
 	buf := readImageFile(trigger)
 	terminal.ClearTerminal() //* Clear the terminal first.
 
 	if trigger {
 		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(trigger))
+		color.HiBlack(returnFormattedMsg(trigger, replacementMsg))
 	} else {
 		color.White(string(buf))
-		color.White(returnFormattedMsg(trigger))
+		color.White(returnFormattedMsg(trigger, replacementMsg))
 	}
 }
