@@ -2,12 +2,14 @@
 	"testcase_aiSpeaker_1":
 	{	
 		"__scenario__": "aiSpeaker turned off",
-		"trigger": false
+		"trigger": false,
+		"replacementMsg": ""
 	},
 
 	"testcase_aiSpeaker_2":
 	{	
 		"__scenario__": "aiSpeaker turned on",
-		"trigger": true
+		"trigger": true,
+		"replacementMsg": "There is a soundbar in this hotel"
 	}
 }

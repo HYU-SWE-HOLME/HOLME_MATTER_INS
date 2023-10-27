@@ -15,11 +15,11 @@ type InstanceHandler struct {
 - Handles the incoming frame, parse the data, and handles the instance.
 */
 func (handler *InstanceHandler) HandleFrame(ctx context.Context, frame *InstanceAiSpeaker.AiSpeakerFrame) (*InstanceAiSpeaker.AiSpeakerRes, error) {
-	trigger := frame.Trigger
+	trigger, replacementMsg := frame.Trigger, frame.ReplacementMsg
 	if trigger { // on
-		features.PrintAiSpeaker(true)
+		features.PrintAiSpeaker(true, replacementMsg)
 	} else { // off
-		features.PrintAiSpeaker(false)
+		features.PrintAiSpeaker(false, replacementMsg)
 	}
 	return &InstanceAiSpeaker.AiSpeakerRes{Status: true, Error: ""}, nil
 }

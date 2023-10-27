@@ -1,9 +1,21 @@
 {
-  "testcase_lightbulb":
+  "testcase_lightbulb_1":
   {
-    "__scenario__": "LightBulb - Turn the light yellow with degree 70",
+    "__scenario__": "light turned off",
     "instance": 1,
-    "payload": "{\"trigger\":true,\"degree\":70,\"color\":\"yellow\"}"
+    "payload": "{\"trigger\":false,\"degree\":0,\"color\":\"white\"}"
+  },
+  "testcase_lightbulb_2":
+  {
+    "__scenario__": "light turned on after key card is inserted",
+    "instance": 1,
+    "payload": "{\"trigger\":true,\"degree\":100,\"color\":\"white\"}"
+  },
+  "testcase_lightbulb_3":
+  {
+    "__scenario__": "weak light(nap mode)",
+    "instance": 1,
+    "payload": "{\"trigger\":true,\"degree\":20,\"color\":\"yellow\"}"
   }
 }
 

@@ -1,0 +1,13 @@
+message waterDispenserFrame {
+    bool triggerReminder = 1; // 0: before medication reminder / 1: after/during medication reminder
+    bool triggerWater = 2; // 0: water not dispensed 1: water dispensed
+}
+
+message waterDispenserRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service WaterDispenser {
+  rpc HandleFrame(waterDispenserFrame) returns(waterDispenserRes);
+}

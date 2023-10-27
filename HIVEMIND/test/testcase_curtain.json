@@ -1,8 +1,14 @@
 {
-  "testcase_curtain":
+  "testcase_curtain_1":
   {
-    "__scenario__": "Curtain - Open Vertical, Sided Top Curtain model with 100 degree",
+    "__scenario__": "curtain closed(opend 0%)",
     "instance": 2,
     "payload": "{\"isHorizontal\":false,\"isCenterMode\":false,\"isLeftOrTop\":false,\"degree\":100}"
+  },
+  "testcase_curtain_2":
+  {
+    "__scenario__": "curtain opened before card key is inserted",
+    "instance": 2,
+    "payload": "{\"isHorizontal\":false,\"isCenterMode\":false,\"isLeftOrTop\":false,\"degree\":90}"
   }
 }

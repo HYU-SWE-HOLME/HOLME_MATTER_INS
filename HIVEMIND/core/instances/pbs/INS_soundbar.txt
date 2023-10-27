@@ -1,0 +1,12 @@
+message soundbarFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+}
+
+message soundbarRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Soundbar {
+  rpc HandleFrame(soundbarFrame) returns(soundbarRes);
+}

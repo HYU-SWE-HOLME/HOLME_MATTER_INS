@@ -6,7 +6,32 @@ package HOLME_instance;
 
 option go_package = "src/core/hivemind";
 
-message curtainFrame {
+message aiSpeakerFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+    string replacementMsg = 2; // message to be printed(replacement recommendation)
+}
+
+message aiSpeakerRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service AiSpeaker {
+  rpc HandleFrame(aiSpeakerFrame) returns(aiSpeakerRes);
+}message airconFrame {
+    bool trigger = 1;   // 0: off / 1: on
+    int64 temperature = 2; 
+    int64 windDegree = 3; // air conditioner intensity
+}
+
+message airconRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Aircon {
+  rpc HandleFrame(airconFrame) returns(airconRes);
+}message curtainFrame {
     bool isHorizontal = 1; // 0: vertical, 1: horizontal
     bool isCenterMode = 2; // 0: side to side mode, 1: center mode
     // 0 & horizontal: opened from right / 1 & horizontal: opened from left
@@ -40,3 +65,60 @@ service LightBulb {
   rpc HandleFrame(lightBulbFrame) returns(lightBulbRes);
 }
 
+message massageChairFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+}
+
+message massageChairRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service MassageChair {
+  rpc HandleFrame(massageChairFrame) returns(massageChairRes);
+}message refrigeratorFrame {
+    bool trigger = 1; // 0: off, 1: on
+}
+
+message refrigeratorRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Refrigerator {
+  rpc HandleFrame(refrigeratorFrame) returns(refrigeratorRes);
+}message soundbarFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+}
+
+message soundbarRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Soundbar {
+  rpc HandleFrame(soundbarFrame) returns(soundbarRes);
+}message televisionFrame {
+    bool trigger = 1; // 0: music off, 1: music on
+}
+
+message televisionRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Television {
+  rpc HandleFrame(televisionFrame) returns(televisionRes);
+}message waterDispenserFrame {
+    bool triggerReminder = 1; // 0: before medication reminder / 1: after/during medication reminder
+    bool triggerWater = 2; // 0: water not dispensed 1: water dispensed
+}
+
+message waterDispenserRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service WaterDispenser {
+  rpc HandleFrame(waterDispenserFrame) returns(waterDispenserRes);
+}

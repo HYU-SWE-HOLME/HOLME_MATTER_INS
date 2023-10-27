@@ -1,0 +1,14 @@
+message airconFrame {
+    bool trigger = 1;   // 0: off / 1: on
+    int64 temperature = 2; 
+    int64 windDegree = 3; // air conditioner intensity
+}
+
+message airconRes{
+  bool status = 1;
+  string error = 2;
+}
+
+service Aircon {
+  rpc HandleFrame(airconFrame) returns(airconRes);
+}
