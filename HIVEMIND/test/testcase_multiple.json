@@ -1,0 +1,16 @@
+{
+  "__senario__": "Curtain - Open Vertical, Sided Top Curtain model with 100 degree",
+  "user": "Kyum",
+  "request": [
+    {
+      "__senario__": "Curtain - Open Vertical, Sided Top Curtain model with 100 degree",
+      "instance": 2,
+      "payload": "{\"isHorizontal\":false,\"isCenterMode\":false,\"isLeftOrTop\":false,\"degree\":100}"
+    },
+    {
+      "__scenario__": "weak light(nap mode)",
+      "instance": 1,
+      "payload": "{\"trigger\":true,\"degree\":20,\"color\":\"yellow\"}"
+    }
+  ]
+}

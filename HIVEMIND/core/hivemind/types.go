@@ -8,8 +8,20 @@ type InstanceResponse struct {
 }
 
 type RESTResponse struct {
-	Ok Status
+	Result []InstanceResponse
 }
+
+type InstanceFrame struct {
+	User    string            `json:"user"`
+	Request []InstanceRequest `json:"request"`
+}
+
+type InstanceRequest struct {
+	InstType int    `json:"instance"`
+	Payload  string `json:"payload"`
+}
+
+type HandleFrameFunction func(string) InstanceResponse
 
 const (
 	SUCCESSFUL Status = iota
