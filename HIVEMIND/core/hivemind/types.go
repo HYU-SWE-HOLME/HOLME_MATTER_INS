@@ -2,13 +2,23 @@ package hivemind
 
 type Status int8
 
+type Instance int8
+
+type PingRequest struct {
+	userId int
+}
+
 type InstanceResponse struct {
 	Ok    Status
 	error error
 }
 
-type RESTResponse struct {
+type RESTSyncResponse struct {
 	Result []InstanceResponse
+}
+
+type RESTPingResponse struct {
+	Result []bool
 }
 
 type InstanceFrame struct {
@@ -27,4 +37,16 @@ const (
 	SUCCESSFUL Status = iota
 	NO_DEVICE
 	ERROR
+)
+
+const (
+	LIGHT_BULB Instance = iota
+	CURTAIN
+	AC
+	REFRIGERATOR
+	WATER_DISPENSER
+	TELEVISION
+	SOUNDBAR
+	MASSAGE_CHAIR
+	AI_SPEAKER
 )
