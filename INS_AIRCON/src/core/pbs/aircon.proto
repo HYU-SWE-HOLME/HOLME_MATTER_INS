@@ -5,8 +5,27 @@ option go_package = "src/core/InstanceAircon";
 
 message airconFrame {
     bool trigger = 1;   // 0: off / 1: on
-    int64 temperature = 2; 
-    int64 windDegree = 3; // air conditioner intensity
+    /*
+      modeCooling(냉방)
+      modeEco(절전)
+      modeDry(자동 건조)
+      modeSleep(열대야 취침)
+      modePowerCooling(쿨파워)
+      modeFan(송풍)
+      modePurify(청정)
+      modeSmartCare(스마트케어)
+    */
+    string mode = 2;
+    bool airflowDirect = 3; // 0: indirect airflow(간접 바람) / 1: direct airflow(직접 바람)
+    int64 fanSpeed = 4;
+    int64 brightnessScreen = 5;
+    int64 objTemperature = 6; // user set temperature
+    bool startWakeupTimer = 7;
+    bool startShutdownTimer = 8;
+    bool stopWakeupTimer = 9;
+    bool stopShutdownTimer = 10;
+    int64 wakeupTime = 11;
+    int64 shutdownTime = 12;
 }
 
 message airconRes{

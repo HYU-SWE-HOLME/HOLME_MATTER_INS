@@ -34,8 +34,8 @@ func (lb *Aircon) Start() error {
 	log.Printf("Starting Instance...")
 	log.Printf("INSTANCE AIRCON RUNNING...")
 
-	terminal.ClearTerminal()       //* Clears Terminal, starts initialization.
-	features.PrintAirconOff(-1, 0) //* Prints the default images as a initial state.
+	terminal.ClearTerminal()  //* Clears Terminal, starts initialization.
+	features.PrintAirconOff() //* Prints the default images as a initial state.
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to initate features: %v", err)
 		return err

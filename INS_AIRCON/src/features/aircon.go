@@ -19,11 +19,35 @@ import (
 - Return Value: string
 	- Returns formatted message.
 */
-func returnFormattedMsg(trigger bool, temperature int, degree int) string {
-	if !trigger {
-		return "Air conditioner state: OFF"
+func returnFormattedMsg(trigger bool, mode string, airflowDirect bool, fanSpeed int,
+	brightnessScreen int, objTemperature int, startWakeupTimer bool, startShutdwonTimer bool,
+	stopWakeupTimer bool, stopShutdwonTimer bool, wakeupTime int, shutdownTime int) string {
+	_airflowMode := ""
+	if airflowDirect {
+		_airflowMode = "direct"
 	} else {
-		return "Air conditioner state: ON\nUser set temperature: " + strconv.Itoa(int(temperature)) + "\nWind intesity: " + strconv.Itoa(int(degree))
+		_airflowMode = "indirect"
+	}
+
+	if trigger {
+		if startWakeupTimer {
+			return "Wake up timer set: " + strconv.Itoa(int(wakeupTime)) + ":00"
+		} else if startShutdwonTimer {
+			return "Shut down timer set: " + strconv.Itoa(int(shutdownTime)) + ":00"
+		} else if stopWakeupTimer {
+			return "Wake up timer stopped"
+		} else if stopShutdwonTimer {
+			return "Shut down timer stopped"
+		} else { // No timer set
+			return "Air conditioner state: ON\n" +
+				"Air conditioner mode: " + mode +
+				"\nAirflow: " + _airflowMode +
+				"\nFan speed: " + strconv.Itoa(int(fanSpeed)) +
+				"\nUser set temperature: " + strconv.Itoa(int(objTemperature)) +
+				"\nScreen brightness: " + strconv.Itoa(int(brightnessScreen)) + "\n"
+		}
+	} else {
+		return "Air conditioner state: OFF"
 	}
 }
 
@@ -61,11 +85,15 @@ func readImageFile(trigger bool) []byte {
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintAirconOn(temperature int, degree int) {
+func PrintAirconOn(trigger bool, mode string, airflowDirect bool, fanSpeed int,
+	brightnessScreen int, objTemperature int, startWakeupTimer bool, startShutdwonTimer bool,
+	stopWakeupTimer bool, stopShutdwonTimer bool, wakeupTime int, shutdownTime int) {
 	buf := readImageFile(true)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(true, temperature, degree))
+	color.HiBlack(returnFormattedMsg(true, mode, airflowDirect, fanSpeed,
+		brightnessScreen, objTemperature, startShutdwonTimer, startShutdwonTimer,
+		stopWakeupTimer, stopShutdwonTimer, wakeupTime, shutdownTime))
 }
 
 // PrintAirconOff
@@ -77,9 +105,11 @@ func PrintAirconOn(temperature int, degree int) {
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintAirconOff(temperature int, degree int) {
+func PrintAirconOff() {
 	buf := readImageFile(false)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.White(string(buf))
-	color.White(returnFormattedMsg(false, temperature, degree))
+	color.White(returnFormattedMsg(false, "", true, 0,
+		0, 0, true, true,
+		true, true, 0, 0))
 }

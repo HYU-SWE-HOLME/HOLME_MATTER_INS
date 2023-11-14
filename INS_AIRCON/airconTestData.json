@@ -3,15 +3,33 @@
 	{	
 		"__scenario__": "aircon turned off",
 		"trigger": false,
-		"temperature": -1,
-		"windDegree": 0
+		"mode": "modeCooling",
+		"airflowDirect": true,
+		"fanSpeed": 0,
+		"brightnessScreen": 0,
+		"objTemperature": -1,
+		"startWakeupTimer": false,
+		"startShutdownTimer": false,
+		"stopWakeupTimer": false,
+		"stopShutdownTimer": false,
+		"wakeupTime": -1,
+		"shutdownTime": -1
 	},
 
 	"testcase_aircon_2":
 	{	
 		"__scenario__": "aircon turned on after key card is inserted",
 		"trigger": true,
-		"temperature": 22,
-		"windDegree": 5
+		"mode": "modeCooling",
+		"airflowDirect": true,
+		"fanSpeed": 5,
+		"brightnessScreen": 10,
+		"objTemperature": 22,
+		"startWakeupTimer": false,
+		"startShutdownTimer": false,
+		"stopWakeupTimer": false,
+		"stopShutdownTimer": false,
+		"wakeupTime": -1,
+		"shutdownTime": -1
 	}
 }
