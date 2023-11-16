@@ -18,11 +18,15 @@ import (
 - Return Value: string
 	- Returns formatted message.
 */
-func returnFormattedMsg(trigger bool, replacementMsg string) string {
+func returnFormattedMsg(trigger bool, askForReplacement bool, replacement bool) string {
 	if !trigger {
 		return "AI Speaker state: OFF"
-	} else {
-		return "AI Speaker state: ON\nReplacement Message: " + replacementMsg
+	} else if askForReplacement {
+		return "It looks like there's a soundbar in this hotel.\nShall I play the music through the soundbar?"
+	} else if replacement {
+		return "Sure, I'll play music through the soundbar for you."
+	} else { // no replacement
+		return "I'll play the music for you"
 	}
 }
 
@@ -35,8 +39,8 @@ func returnFormattedMsg(trigger bool, replacementMsg string) string {
 - Return Value: []byte
 	- It returns printable byte array.
 */
-func readImageFile(trigger bool) []byte {
-	if trigger {
+func readImageFile(trigger bool, askForReplacement bool, replacement bool) []byte {
+	if trigger && !askForReplacement && !replacement {
 		buf, err := os.ReadFile("src/raw/on.txt")
 		if err != nil {
 			panic(err)
@@ -59,15 +63,17 @@ func readImageFile(trigger bool) []byte {
 - Return Value: void
 	- It will do its task and exit the function.
 */
-func PrintAiSpeaker(trigger bool, replacementMsg string) {
-	buf := readImageFile(trigger)
+func PrintAiSpeaker(trigger bool, askForReplacement bool, replacement bool) {
+	buf := readImageFile(trigger, askForReplacement, replacement)
 	terminal.ClearTerminal() //* Clear the terminal first.
-
-	if trigger {
+	if !trigger {
+		color.White(string(buf))
+		color.White(returnFormattedMsg(trigger, askForReplacement, replacement))
+	} else if askForReplacement || (!askForReplacement && !replacement) {
 		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(trigger, replacementMsg))
+		color.HiBlack(returnFormattedMsg(trigger, askForReplacement, replacement))
 	} else {
 		color.White(string(buf))
-		color.White(returnFormattedMsg(trigger, replacementMsg))
+		color.White(returnFormattedMsg(trigger, askForReplacement, replacement))
 	}
 }
