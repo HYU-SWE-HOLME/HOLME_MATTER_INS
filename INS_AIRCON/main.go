@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	//* Initiate LightBulb Instance
+	//* Initiate aircon Instance
 	ac := aircon.Init()
 	err := ac.Start()
 	if err != nil {
