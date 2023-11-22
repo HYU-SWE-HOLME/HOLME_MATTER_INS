@@ -1,7 +1,6 @@
 package hivemind
 
 import (
-	"errors"
 	"net/http"
 )
 
@@ -26,7 +25,7 @@ func InstanceRequestHandler(instanceRequest InstanceRequest, wr http.ResponseWri
 	handler, exists := handlers[instanceType]
 	if !exists {
 		//* Handle the case where the instance type is not recognized.
-		return InstanceResponse{error: errors.New("unknown instance type")}
+		return InstanceResponse{ERROR}
 	}
 
 	//* Call the appropriate handler and return its response.

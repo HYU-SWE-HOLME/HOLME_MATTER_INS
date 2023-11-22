@@ -8,9 +8,13 @@ type PingRequest struct {
 	userId int
 }
 
+type PingResponse struct {
+	InstanceId int
+	IsExist    bool
+}
+
 type InstanceResponse struct {
-	Ok    Status
-	error error
+	Ok Status
 }
 
 type RESTSyncResponse struct {
@@ -18,7 +22,7 @@ type RESTSyncResponse struct {
 }
 
 type RESTPingResponse struct {
-	Result []bool
+	Result []PingResponse
 }
 
 type InstanceFrame struct {

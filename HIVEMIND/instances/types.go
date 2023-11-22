@@ -17,9 +17,18 @@ type Curtain struct {
 
 // Aircon * Instance 3: Airconditioner
 type Aircon struct {
-	Trigger     bool
-	Temperature int
-	WindDegree  int
+	Trigger            bool
+	Mode               string
+	AirflowDirect      bool
+	FanSpeed           int
+	BrightnessScreen   int
+	ObjTemperature     int
+	StartWakeupTimer   bool
+	StartShutdownTimer bool
+	StopWakeupTimer    bool
+	StopShutdownTimer  bool
+	WakeupTime         int
+	ShutdownTime       int
 }
 
 // Refrigerator * Instance 4: Refrigerator
@@ -50,6 +59,7 @@ type MassageChair struct {
 
 // AiSpeaker * Instance 9: AI Speaker
 type AiSpeaker struct {
-	Trigger        bool
-	ReplacementMsg string
+	Trigger           bool
+	AskForReplacement bool
+	Replacement       bool
 }

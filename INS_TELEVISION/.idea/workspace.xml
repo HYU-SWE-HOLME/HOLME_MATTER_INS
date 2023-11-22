@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d1036d87-f914-4867-9909-6b17a0806799" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../INS_AISPEAKER/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../INS_AISPEAKER/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../INS_AISPEAKER/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/RESTHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/RESTHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instanceHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instanceHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instanceRequestHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instanceRequestHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instances.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/instances.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/hivemind/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/instances/merged_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/instances/pbs/INS_aiSpeaker.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/instances/pbs/INS_aiSpeaker.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/core/instances/pbs/INS_aircon.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/core/instances/pbs/INS_aircon.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HIVEMIND/instances/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/../HIVEMIND/instances/types.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///opt/homebrew/opt/go/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2YX7vc9aO8CLmcr7gd0WZYTL4vN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/kyumericano/Desktop/Dev/HYU/2023-02/SWE_Proj/MATTER_INS/INS_TELEVISION"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

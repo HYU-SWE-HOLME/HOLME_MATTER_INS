@@ -12,21 +12,18 @@ func HandleLightBulb(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToLightBulb(lightBulb.Trigger, lightBulb.Degree, lightBulb.Color); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -37,21 +34,18 @@ func HandleCurtain(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToCurtain(curtain.IsHorizontal, curtain.IsCenterMode, curtain.IsLeftOrTop, int64(curtain.Degree)); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -62,21 +56,31 @@ func HandleAircon(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
-	if res := SendFrameDataToAircon(aircon.Trigger, aircon.Temperature, aircon.WindDegree); !res {
+	if res := SendFrameDataToAircon(
+		aircon.Trigger,
+		aircon.Mode,
+		aircon.AirflowDirect,
+		aircon.FanSpeed,
+		aircon.BrightnessScreen,
+		aircon.ObjTemperature,
+		aircon.StartWakeupTimer,
+		aircon.StartShutdownTimer,
+		aircon.StopWakeupTimer,
+		aircon.StopShutdownTimer,
+		aircon.WakeupTime,
+		aircon.ShutdownTime,
+	); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -87,21 +91,18 @@ func HandleRefrigerator(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToRefrigerator(refrigerator.Trigger); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -112,21 +113,18 @@ func HandleWaterDispenser(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToWaterDispenser(waterDispenser.TriggerReminder, waterDispenser.TriggerWater); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -137,21 +135,18 @@ func HandleTelevision(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToTelevision(television.Trigger); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -162,21 +157,18 @@ func HandleSoundbar(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToSoundbar(soundbar.Trigger); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -187,21 +179,18 @@ func HandleMassageChair(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
 	if res := SendFrameDataToMassageChair(massageChair.Trigger); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }
 
@@ -212,20 +201,17 @@ func HandleAiSpeaker(frameData string) InstanceResponse {
 		//* ERROR!!!!
 		return InstanceResponse{
 			ERROR,
-			err,
 		}
 	}
-	if res := SendFrameDataToAiSpeaker(aiSpeaker.Trigger, aiSpeaker.ReplacementMsg); !res {
+	if res := SendFrameDataToAiSpeaker(aiSpeaker.Trigger, aiSpeaker.AskForReplacement, aiSpeaker.Replacement); !res {
 		//* Substitution Required.
 		return InstanceResponse{
 			NO_DEVICE,
-			nil,
 		}
 	}
 
 	//* IoT Setting Applied.
 	return InstanceResponse{
 		SUCCESSFUL,
-		nil,
 	}
 }

@@ -1,6 +1,7 @@
 message aiSpeakerFrame {
     bool trigger = 1; // 0: music off, 1: music on
-    string replacementMsg = 2; // message to be printed(replacement recommendation)
+    bool askForReplacement = 2; // 0: before or after asking for replacement, 1: asking for replacement
+    bool replacement = 3; // 0: do not replace, 1: replace with soundbar
 }
 
 message aiSpeakerRes{

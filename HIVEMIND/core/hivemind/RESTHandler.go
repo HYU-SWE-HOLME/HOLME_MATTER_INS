@@ -94,13 +94,17 @@ func PingRequestHandler() http.HandlerFunc {
 
 			// DEMO: Assume there is all instances exists.
 			numInstance := int(AI_SPEAKER) + 1
-			instStatus := make([]bool, numInstance)
+			instStatus := make([]PingResponse, numInstance)
 
 			for i := range instStatus {
-				instStatus[i] = true
+				instStatus[i] = PingResponse{
+					InstanceId: i + 1,
+					IsExist:    true, // All connected in demo.
+				}
 			}
 
 			resp.Result = instStatus
+
 			err = sendPingResponse(resp, wr)
 			if err != nil {
 				ErrorLog(fmt.Sprintf("Error while responding to the server - %v", err))

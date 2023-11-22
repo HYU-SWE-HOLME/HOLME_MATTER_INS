@@ -89,8 +89,17 @@ func SendFrameDataToCurtain(
 
 func SendFrameDataToAircon(
 	trigger bool, // 0: off / 1: on
-	temperature int,
-	windDegree int, // air conditioner intensity
+	mode string,
+	airflowDirect bool,
+	fanSpeed int,
+	brightnessScreen int,
+	objTemperature int, // user set temperature
+	startWakeupTimer bool,
+	startShutdownTimer bool,
+	stopWakeupTimer bool,
+	stopShutdownTimer bool,
+	wakeupTime int,
+	shutdownTime int,
 ) bool {
 	conn, err := grpc.Dial(constants.INS_AIRCON, grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -109,7 +118,19 @@ func SendFrameDataToAircon(
 
 	client := instancePb.NewAirconClient(conn)
 
-	req := &instancePb.AirconFrame{Trigger: trigger, Temperature: int64(temperature), WindDegree: int64(windDegree)}
+	req := &instancePb.AirconFrame{Trigger: trigger,
+		Mode:               mode,
+		AirflowDirect:      airflowDirect,
+		FanSpeed:           int64(fanSpeed),
+		BrightnessScreen:   int64(brightnessScreen),
+		ObjTemperature:     int64(objTemperature), // user set temperature
+		StartWakeupTimer:   startWakeupTimer,
+		StartShutdownTimer: startShutdownTimer,
+		StopWakeupTimer:    stopWakeupTimer,
+		StopShutdownTimer:  stopShutdownTimer,
+		WakeupTime:         int64(wakeupTime),
+		ShutdownTime:       int64(shutdownTime),
+	}
 
 	_, err = client.HandleFrame(context.Background(), req)
 	//* TODO: Add response handler
@@ -302,7 +323,8 @@ func SendFrameDataToMassageChair(
 
 func SendFrameDataToAiSpeaker(
 	trigger bool, // 0: music off / 1: music on
-	replacementMsg string,
+	askForReplacement bool,
+	replacement bool,
 ) bool {
 	conn, err := grpc.Dial(constants.INS_AISPEAKER, grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -321,7 +343,7 @@ func SendFrameDataToAiSpeaker(
 
 	client := instancePb.NewAiSpeakerClient(conn)
 
-	req := &instancePb.AiSpeakerFrame{Trigger: trigger, ReplacementMsg: replacementMsg}
+	req := &instancePb.AiSpeakerFrame{Trigger: trigger, AskForReplacement: askForReplacement, Replacement: replacement} //TODO
 
 	_, err = client.HandleFrame(context.Background(), req)
 	//* TODO: Add response handler
