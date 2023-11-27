@@ -2,6 +2,7 @@ package features
 
 import (
 	"INS_AIRCON/src/terminal"
+	"bufio"
 	"os"
 	"strconv"
 	"time"
@@ -62,21 +63,34 @@ func returnFormattedMsg(trigger bool, mode string, airflowDirect bool, fanSpeed 
 	- It returns printable byte array.
 */
 func readImageFile(trigger bool, figNum int) []byte {
-	if trigger {
-		figNum %= 5
+	figNum %= 5
+	linesToRead := 12 + figNum*2
 
-		buf, err := os.ReadFile("src/raw/on_" + strconv.Itoa(figNum) + ".txt")
-		if err != nil {
-			panic(err)
-		}
-		return buf
-	} else {
-		buf, err := os.ReadFile("src/raw/on_0.txt")
-		if err != nil {
-			panic(err)
-		}
-		return buf
+	filePath := "src/raw/on.txt"
+	file, err := os.Open(filePath)
+	if err != nil {
+		panic(err)
 	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	var buf []byte
+
+	for i := 0; i < linesToRead && scanner.Scan(); i++ {
+		buf = append(buf, scanner.Bytes()...)
+		buf = append(buf, '\n')
+	}
+
+	if err := scanner.Err(); err != nil {
+		panic(err)
+	}
+
+	for i := figNum; i <= 3; i++ {
+		buf = append(buf, '\n', '\n')
+	}
+	buf = append(buf, '\n')
+
+	return buf
 }
 
 // PrintAirconOn
