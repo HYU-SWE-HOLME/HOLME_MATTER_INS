@@ -4,6 +4,7 @@ import (
 	"INS_AIRCON/src/terminal"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/fatih/color"
 )
@@ -60,15 +61,17 @@ func returnFormattedMsg(trigger bool, mode string, airflowDirect bool, fanSpeed 
 - Return Value: []byte
 	- It returns printable byte array.
 */
-func readImageFile(trigger bool) []byte {
+func readImageFile(trigger bool, figNum int) []byte {
 	if trigger {
-		buf, err := os.ReadFile("src/raw/on.txt")
+		figNum %= 5
+
+		buf, err := os.ReadFile("src/raw/on_" + strconv.Itoa(figNum) + ".txt")
 		if err != nil {
 			panic(err)
 		}
 		return buf
 	} else {
-		buf, err := os.ReadFile("src/raw/off.txt")
+		buf, err := os.ReadFile("src/raw/on_0.txt")
 		if err != nil {
 			panic(err)
 		}
@@ -88,12 +91,15 @@ func readImageFile(trigger bool) []byte {
 func PrintAirconOn(trigger bool, mode string, airflowDirect bool, fanSpeed int,
 	brightnessScreen int, objTemperature int, startWakeupTimer bool, startShutdwonTimer bool,
 	stopWakeupTimer bool, stopShutdwonTimer bool, wakeupTime int, shutdownTime int) {
-	buf := readImageFile(true)
-	terminal.ClearTerminal() //* Clear the terminal first.
-	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(true, mode, airflowDirect, fanSpeed,
-		brightnessScreen, objTemperature, startShutdwonTimer, startShutdwonTimer,
-		stopWakeupTimer, stopShutdwonTimer, wakeupTime, shutdownTime))
+	for i := 0; i < 200; i++ {
+		buf := readImageFile(true, i)
+		terminal.ClearTerminal() //* Clear the terminal first.
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(true, mode, airflowDirect, fanSpeed,
+			brightnessScreen, objTemperature, startShutdwonTimer, startShutdwonTimer,
+			stopWakeupTimer, stopShutdwonTimer, wakeupTime, shutdownTime))
+		time.Sleep(1 * time.Second)
+	}
 }
 
 // PrintAirconOff
@@ -106,7 +112,7 @@ func PrintAirconOn(trigger bool, mode string, airflowDirect bool, fanSpeed int,
 	- It will do its task and exit the function.
 */
 func PrintAirconOff() {
-	buf := readImageFile(false)
+	buf := readImageFile(false, 0)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.White(string(buf))
 	color.White(returnFormattedMsg(false, "", true, 0,
