@@ -9,7 +9,7 @@
 
     "testcase_lightbulb_2":
     {
-        "__scenario__": "light turned on after key card is inserted",
+        "__scenario__": "light turned on after scanning the QR code",
         "trigger": true,
         "degree": 100,
         "color": "white"
