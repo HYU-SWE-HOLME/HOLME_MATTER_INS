@@ -37,13 +37,20 @@ func returnFormattedMsg(state bool, degree int, color string) string {
 - Return Value: []byte
 	- It returns byte array which is printable.
 */
-func readImageFile() []byte {
-	buf, err := os.ReadFile("src/raw/default.txt")
-	if err != nil {
-		panic(err)
+func readImageFile(isOn bool) []byte {
+	if isOn {
+		buf, err := os.ReadFile("src/raw/on.txt")
+		if err != nil {
+			panic(err)
+		}
+		return buf
+	} else {
+		buf, err := os.ReadFile("src/raw/off.txt")
+		if err != nil {
+			panic(err)
+		}
+		return buf
 	}
-
-	return buf
 }
 
 // PrintLightDisabled
@@ -57,14 +64,14 @@ func readImageFile() []byte {
 	- It will do its task and exit the function.
 */
 func PrintLightDisabled() {
-	buf := readImageFile()
+	buf := readImageFile(false)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.White(string(buf))
 	color.White(returnFormattedMsg(false, 0, ""))
 }
 
 func PrintLightEnabled(degree int, flag uint8) {
-	buf := readImageFile()
+	buf := readImageFile(true)
 	terminal.ClearTerminal() //* Clear the terminal first.
 
 	//* Print will be differed by the flag.
