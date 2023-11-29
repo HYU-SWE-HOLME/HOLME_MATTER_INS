@@ -28,11 +28,11 @@ func returnFormattedMsg(isHorizontal bool, isCenterMode bool, isLeftOrTop bool, 
 	curtainState := ""
 
 	if degree > 50 {
-		curtainState += " / closed"
+		curtainState += " / Closed"
 	} else if state < 97 {
-		curtainState += " / opening..."
+		curtainState += " / Opening..."
 	} else {
-		curtainState += " / opened"
+		curtainState += " / Opened"
 	}
 
 	if isHorizontal {
