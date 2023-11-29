@@ -4,6 +4,7 @@ import (
 	"INS_LIGHTBULB/src/terminal"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/fatih/color"
 )
@@ -37,15 +38,15 @@ func returnFormattedMsg(state bool, degree int, color string) string {
 - Return Value: []byte
 	- It returns byte array which is printable.
 */
-func readImageFile(isOn bool) []byte {
-	if isOn {
-		buf, err := os.ReadFile("src/raw/on.txt")
+func readImageFile(isOn bool, figNum int) []byte {
+	if !isOn || figNum%2 == 0 {
+		buf, err := os.ReadFile("src/raw/off.txt")
 		if err != nil {
 			panic(err)
 		}
 		return buf
 	} else {
-		buf, err := os.ReadFile("src/raw/off.txt")
+		buf, err := os.ReadFile("src/raw/on.txt")
 		if err != nil {
 			panic(err)
 		}
@@ -64,29 +65,31 @@ func readImageFile(isOn bool) []byte {
 	- It will do its task and exit the function.
 */
 func PrintLightDisabled() {
-	buf := readImageFile(false)
+	buf := readImageFile(false, 0)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.White(string(buf))
 	color.White(returnFormattedMsg(false, 0, ""))
 }
 
 func PrintLightEnabled(degree int, flag uint8) {
-	buf := readImageFile(true)
-	terminal.ClearTerminal() //* Clear the terminal first.
+	for i := 1; i < 4; i++ {
+		buf := readImageFile(true, i)
+		terminal.ClearTerminal() //* Clear the terminal first.
 
-	//* Print will be differed by the flag.
-	//* Flag will be 8bit unsigned integer.
-	switch flag {
-	case 0:
-		{ //* Default Light
-			color.HiBlack(string(buf))
-			color.HiBlack(returnFormattedMsg(true, degree, "WHITE"))
+		//* Print will be differed by the flag.
+		//* Flag will be 8bit unsigned integer.
+		switch flag {
+		case 0:
+			{ //* Default Light
+				color.HiBlack(string(buf))
+				color.HiBlack(returnFormattedMsg(true, degree, "WHITE"))
+			}
+		case 1:
+			{ //* Yellow Light
+				color.Yellow(string(buf))
+				color.Yellow(returnFormattedMsg(true, degree, "YELLOW"))
+			}
 		}
-	case 1:
-		{ //* Yellow Light
-			color.Yellow(string(buf))
-			color.Yellow(returnFormattedMsg(true, degree, "YELLOW"))
-		}
-
+		time.Sleep(200 * time.Millisecond)
 	}
 }

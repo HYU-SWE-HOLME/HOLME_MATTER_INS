@@ -105,14 +105,14 @@ func readImageFile(trigger bool, figNum int) []byte {
 func PrintAirconOn(trigger bool, mode string, airflowDirect bool, fanSpeed int,
 	brightnessScreen int, objTemperature int, startWakeupTimer bool, startShutdwonTimer bool,
 	stopWakeupTimer bool, stopShutdwonTimer bool, wakeupTime int, shutdownTime int) {
-	for i := 0; i < 200; i++ {
+	for i := 0; i < 20; i++ {
 		buf := readImageFile(true, i)
 		terminal.ClearTerminal() //* Clear the terminal first.
 		color.HiBlack(string(buf))
 		color.HiBlack(returnFormattedMsg(true, mode, airflowDirect, fanSpeed,
 			brightnessScreen, objTemperature, startShutdwonTimer, startShutdwonTimer,
 			stopWakeupTimer, stopShutdwonTimer, wakeupTime, shutdownTime))
-		time.Sleep(1 * time.Second)
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 
