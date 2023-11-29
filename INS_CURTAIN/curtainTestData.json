@@ -1,19 +1,19 @@
 {
 	"testcase_curtain_1":
 	{
-		"__scenario__": "curtain closed(opend 0%)",
+		"__scenario__": "initial state",
 		"isHorizontal": false,
 		"isCenterMode": false,
 		"isLeftOrTop": false,
-		"degree": 0
+		"degree": 100
 	},
 
 	"testcase_curtain_2":
 	{
-		"__scenario__": "curtain opened before card key is inserted",
+		"__scenario__": "curtain opened",
 		"isHorizontal": false,
 		"isCenterMode": false,
 		"isLeftOrTop": false,
-		"degree": 90
+		"degree": 0
 	}
 }
