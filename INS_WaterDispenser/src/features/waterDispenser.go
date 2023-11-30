@@ -3,6 +3,8 @@ package features
 import (
 	"INS_WATERDISPENSER/src/terminal"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/fatih/color"
 )
@@ -17,11 +19,11 @@ import (
 	- Returns formatted message.
 */
 func returnFormattedMsg(triggerReminder bool, triggerWater bool) string {
-	if !triggerReminder { // before medication reminder
+	if !triggerReminder {
 		return "Water dispenser"
-	} else if !triggerWater { // after medication reminder, before users says "give me wagter"
-		return "Water dispenser: Take your medicine!"
-	} else { // after medication reminder, after users says "give me wagter"
+	} else if !triggerWater {
+		return "Water dispenser: 200 mL dispensed"
+	} else {
 		return "Water dispenser: Dispensing water..."
 	}
 }
@@ -35,9 +37,9 @@ func returnFormattedMsg(triggerReminder bool, triggerWater bool) string {
 - Return Value: []byte
 	- It returns printable byte array.
 */
-func readImageFile(trigger bool) []byte {
+func readImageFile(trigger bool, figNum int) []byte {
 	if trigger {
-		buf, err := os.ReadFile("src/raw/on.txt")
+		buf, err := os.ReadFile("src/raw/on_" + strconv.Itoa(figNum) + ".txt")
 		if err != nil {
 			panic(err)
 		}
@@ -61,20 +63,28 @@ func readImageFile(trigger bool) []byte {
 	- It will do its task and exit the function.
 */
 func PrintWaterDispenser(triggerReminder bool, triggerWater bool) {
-	if !triggerReminder { // before medication reminder
-		buf := readImageFile(false)
+	if !triggerReminder {
+		buf := readImageFile(false, 0)
+		terminal.ClearTerminal() //* Clear the terminal first.
+		color.HiBlack(string(buf))
+		color.HiBlack(returnFormattedMsg(triggerReminder, triggerWater))
+	} else if triggerWater {
+		for i := 0; i < 10; i++ {
+			figNum := i % 3
+			buf := readImageFile(true, figNum)
+			terminal.ClearTerminal() //* Clear the terminal first.
+			color.White(string(buf))
+			color.White(returnFormattedMsg(triggerReminder, triggerWater))
+			time.Sleep(200 * time.Millisecond)
+		}
+		buf := readImageFile(false, 0)
 		terminal.ClearTerminal() //* Clear the terminal first.
 		color.White(string(buf))
-		color.White(returnFormattedMsg(false, false))
-	} else if !triggerWater { // after medication reminder, before users says "give me wagter"
-		buf := readImageFile(false)
+		color.White(returnFormattedMsg(true, false))
+	} else {
+		buf := readImageFile(false, 0)
 		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(true, false))
-	} else { // after medication reminder, after users says "give me wagter"
-		buf := readImageFile(true)
-		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(true, true))
+		color.White(string(buf))
+		color.White(returnFormattedMsg(triggerReminder, triggerWater))
 	}
 }

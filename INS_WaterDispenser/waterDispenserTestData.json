@@ -1,22 +1,22 @@
 {
 	"testcase_waterDispenser_1":
 	{
-		"__scenario__": "before medication reminder",
+		"__scenario__": "before pouring water",
 		"triggerReminder": false,
 	    "triggerWater": false
 	},
 
 	"testcase_waterDispenser_2":
 	{
-		"__scenario__": "after medication reminder, before users says \"give me water\" ",
+		"__scenario__": "pouring water",
 		"triggerReminder": true,
-	    "triggerWater": false
+	    "triggerWater": true
 	},
     
     "testcase_waterDispenser_3":
 	{
-		"__scenario__": "after medication reminder, after users says \"give me water\" ",
+		"__scenario__": "after pouring water",
 		"triggerReminder": true,
-	    "triggerWater": true
+	    "triggerWater": false
 	}
 }
