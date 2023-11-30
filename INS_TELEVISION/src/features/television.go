@@ -3,6 +3,8 @@ package features
 import (
 	"INS_TELEVISION/src/terminal"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/fatih/color"
 )
@@ -18,9 +20,9 @@ import (
 */
 func returnFormattedMsg(trigger bool) string {
 	if trigger {
-		return "Television: Music ON"
+		return "Television: Turned ON"
 	} else {
-		return "Television: Music OFF"
+		return "Television: Turned OFF"
 	}
 }
 
@@ -33,9 +35,9 @@ func returnFormattedMsg(trigger bool) string {
 - Return Value: []byte
 	- It returns printable byte array.
 */
-func readImageFile(trigger bool) []byte {
+func readImageFile(trigger bool, figNum int) []byte {
 	if trigger {
-		buf, err := os.ReadFile("src/raw/on.txt")
+		buf, err := os.ReadFile("src/raw/on_" + strconv.Itoa(figNum) + ".txt")
 		if err != nil {
 			panic(err)
 		}
@@ -59,14 +61,19 @@ func readImageFile(trigger bool) []byte {
 */
 func PrintTelevision(trigger bool) {
 	if trigger {
-		buf := readImageFile(true)
+		// i := 0
+		for i := 0; i < 1000; i++ {
+			figNum := i % 3
+			buf := readImageFile(true, figNum)
+			terminal.ClearTerminal() //* Clear the terminal first.
+			color.White(string(buf))
+			color.White(returnFormattedMsg(true))
+			time.Sleep(100 * time.Millisecond)
+		}
+	} else {
+		buf := readImageFile(false, 0)
 		terminal.ClearTerminal() //* Clear the terminal first.
 		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(true))
-	} else {
-		buf := readImageFile(false)
-		terminal.ClearTerminal() //* Clear the terminal first.
-		color.White(string(buf))
-		color.White(returnFormattedMsg(false))
+		color.HiBlack(returnFormattedMsg(false))
 	}
 }
