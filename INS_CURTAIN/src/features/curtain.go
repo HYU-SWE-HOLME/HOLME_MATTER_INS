@@ -29,6 +29,9 @@ func returnFormattedMsg(isHorizontal bool, isCenterMode bool, isLeftOrTop bool, 
 
 	if degree > 50 {
 		curtainState += " / Closed"
+		if state > 1 {
+			curtainState = " / Closing"
+		}
 	} else if state < 97 {
 		curtainState += " / Opening..."
 	} else {
@@ -92,10 +95,13 @@ func readImageFile(degree int, startLine int) []byte {
 */
 func PrintCurtain(degree int) {
 	if degree > 50 { // closed(down)
-		buf := readImageFile(0, 0)
-		terminal.ClearTerminal() //* Clear the terminal first.
-		color.HiBlack(string(buf))
-		color.HiBlack(returnFormattedMsg(false, false, false, degree, 0))
+		for i := 97; i >= 1; i -= linesToRead {
+			buf := readImageFile(100, i)
+			terminal.ClearTerminal() //* Clear the terminal first.
+			color.White(string(buf))
+			color.White(returnFormattedMsg(false, false, false, degree, i))
+			time.Sleep(100 * time.Millisecond)
+		}
 	} else { //opened(up)
 		for i := 1; i <= 98; i += linesToRead {
 			buf := readImageFile(100, i)
@@ -105,4 +111,11 @@ func PrintCurtain(degree int) {
 			time.Sleep(100 * time.Millisecond)
 		}
 	}
+}
+
+func PrintCurtainInit() {
+	buf := readImageFile(0, 0)
+	terminal.ClearTerminal() //* Clear the terminal first.
+	color.HiBlack(string(buf))
+	color.HiBlack(returnFormattedMsg(false, false, false, 0, 0))
 }

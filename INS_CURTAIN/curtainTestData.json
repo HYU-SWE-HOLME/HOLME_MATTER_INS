@@ -10,10 +10,19 @@
 
 	"testcase_curtain_2":
 	{
-		"__scenario__": "curtain opened",
+		"__scenario__": "open curtain",
 		"isHorizontal": false,
 		"isCenterMode": false,
 		"isLeftOrTop": false,
 		"degree": 0
+	},
+
+	"testcase_curtain_3":
+	{
+		"__scenario__": "close curtain",
+		"isHorizontal": false,
+		"isCenterMode": false,
+		"isLeftOrTop": false,
+		"degree": 100
 	}
 }
