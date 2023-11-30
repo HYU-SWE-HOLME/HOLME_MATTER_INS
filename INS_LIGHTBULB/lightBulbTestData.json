@@ -12,14 +12,14 @@
         "__scenario__": "light turned on after scanning the QR code",
         "trigger": true,
         "degree": 100,
-        "color": "white"
+        "color": "yellow"
     },
 
     "testcase_lightbulb_3":
     {
         "__scenario__": "weak light(nap mode)",
         "trigger": true,
-        "degree": 20,
-        "color": "yellow"
+        "degree": 0,
+        "color": "white"
     }
 }

@@ -18,7 +18,7 @@
 
 	"testcase_aircon_2":
 	{	
-		"__scenario__": "aircon turned on after key card is inserted",
+		"__scenario__": "aircon turned on after QR code scanning",
 		"trigger": true,
 		"mode": "modeCooling",
 		"airflowDirect": true,

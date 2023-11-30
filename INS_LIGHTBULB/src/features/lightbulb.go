@@ -67,12 +67,18 @@ func readImageFile(isOn bool, figNum int) []byte {
 func PrintLightDisabled() {
 	buf := readImageFile(false, 0)
 	terminal.ClearTerminal() //* Clear the terminal first.
-	color.White(string(buf))
-	color.White(returnFormattedMsg(false, 0, ""))
+	color.HiBlack(string(buf))
+	color.HiBlack(returnFormattedMsg(false, 0, ""))
 }
 
 func PrintLightEnabled(degree int, flag uint8) {
-	for i := 1; i < 4; i++ {
+	var j int
+	if degree > 0 {
+		j = 4
+	} else {
+		j = 3
+	}
+	for i := 1; i < j; i++ {
 		buf := readImageFile(true, i)
 		terminal.ClearTerminal() //* Clear the terminal first.
 
@@ -81,8 +87,8 @@ func PrintLightEnabled(degree int, flag uint8) {
 		switch flag {
 		case 0:
 			{ //* Default Light
-				color.HiBlack(string(buf))
-				color.HiBlack(returnFormattedMsg(true, degree, "WHITE"))
+				color.White(string(buf))
+				color.White(returnFormattedMsg(true, degree, "WHITE"))
 			}
 		case 1:
 			{ //* Yellow Light
