@@ -19,7 +19,7 @@ func Init() *Hivemind {
 func (hb *Hivemind) Start() error { //* Hivemind will initiated.
 
 	utils.PrintBanner()
-	log.Println("HIVEMIND is running... HOLME is now available for current environment!")
+	log.Println("HOLME HUB is running... HOLME is now available for current environment!")
 
 	err := http.ListenAndServe(":"+PORT, RequestHandler())
 	if err != nil {

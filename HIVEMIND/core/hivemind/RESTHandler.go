@@ -7,15 +7,16 @@ import (
 )
 
 var instanceName = map[int]string{
-	1: "Light Bulb",
-	2: "Curtain",
-	3: "AC",
-	4: "Refrigerator",
-	5: "Water Dispenser",
-	6: "Television",
-	7: "Sound Bar",
-	8: "Massage Chair",
-	9: "AI Speaker",
+	1:  "Light Bulb",
+	2:  "Curtain",
+	3:  "AC",
+	4:  "Refrigerator",
+	5:  "Water Dispenser",
+	6:  "Television",
+	7:  "Sound Bar",
+	8:  "Massage Chair",
+	9:  "AI Speaker",
+	10: "Pet Feeder",
 }
 
 func sendSyncResponse(body RESTSyncResponse, wr http.ResponseWriter) error {
@@ -66,7 +67,8 @@ func SyncRequestHandler() http.HandlerFunc {
 					}
 				case NO_DEVICE:
 					{
-						//WarningLog("There")
+						WarningLog(fmt.Sprintf("No IoT Device Matching for %s, replacement required.", instanceName[request.InstType]))
+						resp.Result = append(resp.Result, res)
 					}
 
 				}
