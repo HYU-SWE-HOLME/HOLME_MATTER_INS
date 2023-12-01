@@ -98,4 +98,5 @@ func PrintLightEnabled(degree int, flag uint8) {
 		}
 		time.Sleep(200 * time.Millisecond)
 	}
+	time.Sleep(1000 * time.Millisecond)
 }

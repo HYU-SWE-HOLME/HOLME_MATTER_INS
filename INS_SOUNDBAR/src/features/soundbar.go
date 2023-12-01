@@ -61,7 +61,7 @@ func readImageFile(trigger bool, figNum int) []byte {
 */
 func PrintSoundbar(trigger bool) {
 	if trigger {
-		for i := 0; i < 99; i++ {
+		for i := 0; i < 6; i++ {
 			figNum := i % 3
 			buf := readImageFile(true, figNum)
 			terminal.ClearTerminal() //* Clear the terminal first.

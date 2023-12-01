@@ -24,27 +24,28 @@ const linesToRead = 16
 	- It will return a completely formatted message.
 */
 func returnFormattedMsg(isHorizontal bool, isCenterMode bool, isLeftOrTop bool, degree int, state int) string {
-	curtainType := ""
+	// curtainType := ""
 	curtainState := ""
 
-	if degree > 50 {
-		curtainState += " / Closed"
+	if degree > 50 { // 초기 state(닫혀있을 때) or 2번 시나리오가 실행되었을 때
+		curtainState = "Closed"
 		if state > 1 {
-			curtainState = " / Closing"
+			curtainState = "Closing"
 		}
 	} else if state < 97 {
-		curtainState += " / Opening..."
+		curtainState = "Opening..."
 	} else {
-		curtainState += " / Opened"
+		curtainState = "Opened"
 	}
+	return "\nCurtain " + curtainState
 
-	if isHorizontal {
-		curtainType += "Horizontal"
-		return "\nCurtain type: " + curtainType + curtainState
-	} else {
-		curtainType += "Vertical"
-		return "\nCurtain type: " + curtainType + curtainState
-	}
+	// if isHorizontal {
+	// 	curtainType += "Horizontal"
+	// 	return "\nCurtain type: " + curtainType + curtainState
+	// } else {
+	// 	curtainType += "Vertical"
+	// 	return "\nCurtain type: " + curtainType + curtainState
+	// }
 }
 
 func extractLines(buf []byte, i, j int) []byte {
@@ -96,11 +97,11 @@ func readImageFile(degree int, startLine int) []byte {
 func PrintCurtain(degree int) {
 	if degree > 50 { // closed(down)
 		for i := 97; i >= 1; i -= linesToRead {
+			time.Sleep(100 * time.Millisecond)
 			buf := readImageFile(100, i)
 			terminal.ClearTerminal() //* Clear the terminal first.
 			color.White(string(buf))
 			color.White(returnFormattedMsg(false, false, false, degree, i))
-			time.Sleep(100 * time.Millisecond)
 		}
 	} else { //opened(up)
 		for i := 1; i <= 98; i += linesToRead {
@@ -111,11 +112,12 @@ func PrintCurtain(degree int) {
 			time.Sleep(100 * time.Millisecond)
 		}
 	}
+	time.Sleep(1000 * time.Millisecond)
 }
 
 func PrintCurtainInit() {
 	buf := readImageFile(0, 0)
 	terminal.ClearTerminal() //* Clear the terminal first.
 	color.HiBlack(string(buf))
-	color.HiBlack(returnFormattedMsg(false, false, false, 0, 0))
+	color.HiBlack(returnFormattedMsg(false, false, false, 60, 0))
 }
