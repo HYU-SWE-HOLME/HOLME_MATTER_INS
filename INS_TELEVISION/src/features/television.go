@@ -62,7 +62,7 @@ func readImageFile(trigger bool, figNum int) []byte {
 func PrintTelevision(trigger bool) {
 	if trigger {
 		// i := 0
-		for i := 0; i < 1000; i++ {
+		for i := 0; i < 10; i++ {
 			figNum := i % 3
 			buf := readImageFile(true, figNum)
 			terminal.ClearTerminal() //* Clear the terminal first.
@@ -70,6 +70,11 @@ func PrintTelevision(trigger bool) {
 			color.White(returnFormattedMsg(true))
 			time.Sleep(100 * time.Millisecond)
 		}
+		buf := readImageFile(true, 3)
+		terminal.ClearTerminal() //* Clear the terminal first.
+		color.White(string(buf))
+		color.White(returnFormattedMsg(true))
+		time.Sleep(100 * time.Millisecond)
 	} else {
 		buf := readImageFile(false, 0)
 		terminal.ClearTerminal() //* Clear the terminal first.
